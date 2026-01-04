@@ -1,64 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация</title>
-</head>
-<body>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['reg-username'], $_POST['reg-email'], $_POST['reg-login'], $_POST['reg-password'])) {
-            $username = trim(filter_var($_POST['reg-username'], FILTER_SANITIZE_SPECIAL_CHARS));
-            $email = trim(filter_var($_POST['reg-email'], FILTER_SANITIZE_SPECIAL_CHARS));
-            $login = trim(filter_var($_POST['reg-login'], FILTER_SANITIZE_SPECIAL_CHARS));
-            $password = trim(filter_var($_POST['reg-password'], FILTER_SANITIZE_SPECIAL_CHARS));
-        } else {
-            echo "Не все поля заполнены!";
-            exit;
-        }
+<?php
+session_start();
+require_once "config.php";
 
-        // Валидация данных
-        if(strlen($username) <= 2) {
-            echo "Имя не может состоять из такого кол-ва символов";
-            exit;
-        }
-        if(strlen($email) <= 2 ) {
-            echo "Почта указана неверно";
-            exit;
-        }
-        if(strlen($login) <= 2) {
-            echo "Логин не может состоять из такого кол-ва символов";
-            exit;
-        }
-        if(strlen($password) <= 2) {
-            echo "Пароль не может состоять из такого кол-ва символов";
-            exit;
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['reg-username'], $_POST['reg-email'], $_POST['reg-login'], $_POST['reg-password'])) {
+        $username = sanitizeString($_POST['reg-username']);
+        $email = trim($_POST['reg-email']);
+        $login = sanitizeString($_POST['reg-login']);
+        $password = trim($_POST['reg-password']);
+    } else {
+        setError("Не все поля заполнены!");
+        header('Location: /index.php');
+        exit;
+    }
+
+    // Валидация данных
+    if (!validateLength($username, MIN_USERNAME_LENGTH)) {
+        setError("Имя должно содержать не менее " . MIN_USERNAME_LENGTH . " символов");
+        header('Location: /index.php');
+        exit;
+    }
+    if (!validateEmail($email)) {
+        setError("Почта указана неверно");
+        header('Location: /index.php');
+        exit;
+    }
+    if (!validateLength($login, MIN_LOGIN_LENGTH)) {
+        setError("Логин должен содержать не менее " . MIN_LOGIN_LENGTH . " символов");
+        header('Location: /index.php');
+        exit;
+    }
+    if (!validateLength($password, MIN_PASSWORD_LENGTH)) {
+        setError("Пароль должен содержать не менее " . MIN_PASSWORD_LENGTH . " символов");
+        header('Location: /index.php');
+        exit;
+    }
+
+        require "conn.php";
 
         require "conn.php";
 
         // ПРОВЕРКА НА СУЩЕСТВУЮЩЕГО ПОЛЬЗОВАТЕЛЯ
         try {
-            // Проверяем, существует ли пользователь с таким логином
-            $check_sql = "SELECT id FROM users WHERE login = ? OR email = ?";
+            // Проверяем, существует ли пользователь с таким логином или email
+            $check_sql = "SELECT login, email FROM users WHERE login = ? OR email = ?";
             $check_query = $conn->prepare($check_sql);
             $check_query->execute([$login, $email]);
+            $existing_user = $check_query->fetch();
             
-            if ($check_query->rowCount() > 0) {
-                // Получаем данные для уточнения, что именно совпало
-                $check_sql_detail = "SELECT login, email FROM users WHERE login = ? OR email = ?";
-                $check_query_detail = $conn->prepare($check_sql_detail);
-                $check_query_detail->execute([$login, $email]);
-                $existing_user = $check_query_detail->fetch(PDO::FETCH_ASSOC);
-                
+            if ($existing_user) {
                 if ($existing_user['login'] === $login && $existing_user['email'] === $email) {
-                    echo "Пользователь с таким логином и email уже существует!";
+                    setError("Пользователь с таким логином и email уже существует!");
                 } elseif ($existing_user['login'] === $login) {
-                    echo "Пользователь с таким логином уже существует!";
+                    setError("Пользователь с таким логином уже существует!");
                 } elseif ($existing_user['email'] === $email) {
-                    echo "Пользователь с таким email уже существует!";
+                    setError("Пользователь с таким email уже существует!");
                 }
+                header('Location: /index.php');
                 exit;
             }
 
@@ -72,20 +70,23 @@
             
             // Проверяем успешность добавления
             if ($query->rowCount() > 0) {
-                // на главную
+                setSuccess("Регистрация прошла успешно!");
                 header('Location: /index.php');
                 exit;
             } else {
-                echo "Ошибка при регистрации пользователя!";
+                setError("Ошибка при регистрации пользователя!");
+                header('Location: /index.php');
+                exit;
             }
             
         } catch (PDOException $e) {
-            echo "Ошибка базы данных: " . $e->getMessage();
+            setError("Ошибка базы данных. Попробуйте позже.");
+            header('Location: /index.php');
             exit;
         }
     } else {
-        echo "Неверный метод запроса!";
+        setError("Неверный метод запроса!");
+        header('Location: /index.php');
+        exit;
     }
-    ?>
-</body>
-</html>
+?>

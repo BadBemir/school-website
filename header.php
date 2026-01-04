@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,24 +47,48 @@
         
 
         <div class="d-flex align-items-center">
-          <!-- Кнопка регистрации/входа -->
-          <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i> Войти
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                  <i class="bi bi-box-arrow-in-right"></i> Вход
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
-                  <i class="bi bi-person-plus"></i> Регистрация
-                </button>
-              </li>
-            </ul>
-          </div>
+          <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
+            <!-- Пользователь авторизован - показываем имя и кнопку выхода -->
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                <li>
+                  <a class="dropdown-item" href="admin.php">
+                    <i class="bi bi-shield-check"></i> Панель администратора
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <?php endif; ?>
+                <li>
+                  <a class="dropdown-item" href="logout.php">
+                    <i class="bi bi-box-arrow-right"></i> Выйти
+                  </a>
+                </li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <!-- Пользователь не авторизован - показываем кнопку входа/регистрации -->
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> Войти
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-box-arrow-in-right"></i> Вход
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    <i class="bi bi-person-plus"></i> Регистрация
+                  </button>
+                </li>
+              </ul>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -77,6 +104,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
+            <?php if (isset($_SESSION['error'])): ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" id="loginError">
+                <i class="bi bi-exclamation-triangle-fill"></i> <?php echo htmlspecialchars($_SESSION['error']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php endif; ?>
             <form id="loginForm" action="auth.php" method="post">
               <div class="mb-3">
                 <label for="loginEmail" class="form-label">Логин</label>
@@ -145,14 +178,30 @@
     </div>
     
     <script>
-    
-              // Закрываем модальное окно
-              const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
-              modal.hide();
-            }
+      // Автоматически открываем модальное окно входа, если есть ошибка
+      <?php if (isset($_SESSION['error'])): ?>
+      (function() {
+        function openLoginModal() {
+          if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+          } else {
+            // Если Bootstrap еще не загружен, ждем
+            setTimeout(openLoginModal, 100);
           }
-        });
-      });
+        }
+        // Пытаемся открыть модальное окно после загрузки DOM
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', openLoginModal);
+        } else {
+          // DOM уже загружен, но Bootstrap может быть еще не загружен
+          openLoginModal();
+        }
+      })();
+      <?php 
+        // Очищаем ошибку после отображения
+        unset($_SESSION['error']);
+      endif; ?>
     </script>
 </body>
 </html>
