@@ -99,6 +99,8 @@ function getError() {
     return null;
 }
 
+
+
 /**
  * Получение и удаление сообщения об успехе
  * @return string|null
@@ -111,6 +113,8 @@ function getSuccess() {
     }
     return null;
 }
+
+
 
 /**
  * Проверка существования колонки в таблице
@@ -142,5 +146,6 @@ function ensureJobColumn($conn) {
     }
 }
 ?>
+
 
 

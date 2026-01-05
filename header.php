@@ -15,7 +15,9 @@ session_start();
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <!-- Бренд слева -->
-      <a class="navbar-brand fs-4 fw-bold" href="#">Школа №12 НГО</a>
+      <a class="navbar-brand fs-4 fw-bold" href="index.php">
+        <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
+      </a>
 
       <!-- Кнопка для мобильных -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -43,6 +45,7 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Контакты</a>
           </li>
+
         </ul>
         
 
@@ -54,6 +57,13 @@ session_start();
                 <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
+                <!-- Кнопка личного кабинета -->
+                <li>
+                  <a class="dropdown-item" href="account.php">
+                    <i class="bi bi-person-badge"></i> Личный кабинет
+                  </a>
+                </li>
+                
                 <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
                 <li>
                   <a class="dropdown-item" href="admin.php">
@@ -62,6 +72,7 @@ session_start();
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <?php endif; ?>
+                
                 <li>
                   <a class="dropdown-item" href="logout.php">
                     <i class="bi bi-box-arrow-right"></i> Выйти
@@ -179,7 +190,11 @@ session_start();
     
     <script>
       // Автоматически открываем модальное окно входа, если есть ошибка
-      <?php if (isset($_SESSION['error'])): ?>
+      // НО ТОЛЬКО НА ГЛАВНОЙ СТРАНИЦЕ (index.php) И НА СТРАНИЦАХ ГДЕ НЕТ ЛИЧНОГО КАБИНЕТА
+      <?php 
+      $current_page = basename($_SERVER['PHP_SELF']);
+      if (isset($_SESSION['error']) && $current_page !== 'account.php'): 
+      ?>
       (function() {
         function openLoginModal() {
           if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
@@ -190,6 +205,7 @@ session_start();
             setTimeout(openLoginModal, 100);
           }
         }
+
         // Пытаемся открыть модальное окно после загрузки DOM
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', openLoginModal);
@@ -197,10 +213,14 @@ session_start();
           // DOM уже загружен, но Bootstrap может быть еще не загружен
           openLoginModal();
         }
+        
       })();
+
       <?php 
-        // Очищаем ошибку после отображения
-        unset($_SESSION['error']);
+        // Очищаем ошибку после отображения (только на главной)
+        if ($current_page === 'index.php') {
+          unset($_SESSION['error']);
+        }
       endif; ?>
     </script>
 </body>

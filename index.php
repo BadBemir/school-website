@@ -14,23 +14,33 @@
     <?php require_once "header.php"?>
     
     <main>
-      <div class="container my-5">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <img src="images/school-front.jpeg" class="img-fluid rounded shadow" alt="Изображение школы">
-          </div>
-          <div class="col-md-6">
-            <h2 class="mb-3">Добро пожаловать!</h2>
-            <p class="lead">Мы рады приветствовать гостей на нашем сайте — электронном портрете нашей замечательной школы. Надеемся, что сайт будет во многом полезен как учителям, так ученикам и родителям.</p>
-            <p>Здесь Вы сможете найти актуальную информацию об учреждении.</p>
-            <a href="about.php" class="btn btn-primary">Узнать больше</a>
+      <!-- Hero Section -->
+      <section class="hero-section mt-4">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 hero-content fade-in-up">
+              <h1 class="display-4 fw-bold mb-4">Добро пожаловать в Школу №12 НГО</h1>
+              <p class="lead mb-4" style="font-size: 1.25rem; opacity: 0.95;">Мы рады приветствовать гостей на нашем сайте — электронном портрете нашей замечательной школы. Надеемся, что сайт будет во многом полезен как учителям, так ученикам и родителям.</p>
+              <p class="mb-4" style="opacity: 0.9;">Здесь Вы сможете найти актуальную информацию об учреждении.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a href="about.php" class="btn btn-primary btn-lg">Узнать больше</a>
+                <a href="contact.php" class="btn btn-outline-dark btn-lg">Связаться с нами</a>
+              </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+              <img src="images/school-front.jpeg" class="img-fluid shadow-custom" alt="Изображение школы" style="max-height: 500px; object-fit: cover; width: 100%; border-radius: 20px;">
+            </div>
           </div>
         </div>
-      </div>
+      </section>
       
       <div class="container my-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2 class="mb-0">Наши новости</h2>
+      
+      <div class="container my-5">
+        <div class="text-center mb-5">
+          <h2 class="mb-3 gradient-text">Наши новости</h2>
+          <p class="text-muted lead">Следите за последними событиями и новостями нашей школы</p>
+          <div class="border-bottom border-primary mx-auto" style="width: 100px; height: 4px; border-radius: 2px;"></div>
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

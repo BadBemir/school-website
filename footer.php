@@ -1,29 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Футер</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Школа №12 НГО</h5>
-                    <p>Образовательное учреждение с 1989 года</p>
-                    <p>© 2026 Все права защищены</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <h5>Быстрые ссылки</h5>
-                    <a href="index.php" class="text-white text-decoration-none me-3">Главная</a>
-                    <a href="about.php" class="text-white text-decoration-none me-3">О школе</a>
-                    <a href="contact.php" class="text-white text-decoration-none">Контакты</a>
-                </div>
+
+
+
+<footer class="bg-dark text-white mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5 class="mb-3">
+                    <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
+                </h5>
+                <p class="mb-2">Образовательное учреждение с 1989 года</p>
+                <p class="mb-0 text-muted small">Муниципальное автономное общеобразовательное учреждение «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-3">Быстрые ссылки</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="index.php" class="text-decoration-none">
+                            <i class="bi bi-house me-2"></i>Главная
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="about.php" class="text-decoration-none">
+                            <i class="bi bi-info-circle me-2"></i>О школе
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="contact.php" class="text-decoration-none">
+                        <i class="bi bi-phone me-2"></i>Контакты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-3">Контакты</h5>
+                <p class="mb-2">
+                    <small>г. Находка, Проспект Мира, 10</small>
+                </p>
+                <p class="mb-2">
+                    <small> +7 (4236) 69-98-03</small>
+                </p>
+                <p class="mb-2">
+                    <small>nkhschool12@mail.ru</small>
+                </p>
+                <p class="mb-0 text small">
+                    © <?php echo date('Y'); ?> Все права защищены
+                </p>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+        <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+    </div>
+</footer>

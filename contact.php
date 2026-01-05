@@ -17,15 +17,18 @@
     <?php require_once "header.php"?>
     
     
- <main class="container my-5">
-        <!-- Заголовок -->
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h1 class="display-4 fw-bold text-primary mb-3">Контакты</h1>
-                <p class="lead">Свяжитесь с нами любым удобным способом</p>
-                <div class="border-bottom border-primary mx-auto" style="width: 100px;"></div>
-            </div>
+ <!-- Hero Section -->
+      <section class="hero-section" style="padding: 3rem 0;">
+        <div class="container">
+          <div class="text-center hero-content">
+            <h1 class="display-4 fw-bold mb-3">Контакты</h1>
+            <p class="lead" style="font-size: 1.25rem; opacity: 0.95;">Свяжитесь с нами любым удобным способом</p>
+            <div class="border-bottom border-white mx-auto" style="width: 100px; height: 4px; border-radius: 2px; opacity: 0.8;"></div>
+          </div>
         </div>
+      </section>
+      
+ <main class="container my-5">
 
         <div class="row g-4">
             <!-- Левая колонка: Контактная информация -->
@@ -66,7 +69,7 @@
                             </div>
                             <div>
                                 <a href="tel:+74236741996" class="text-decoration-none">
-                                    <i class="bi bi-fax me-2"></i>+7 (4236) 74-19-96
+                                    <i class="bi bi-phone me-2"></i>+7 (4236) 74-19-96
                                 </a>
                             </div>
                         </div>
