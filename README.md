@@ -6,6 +6,9 @@
   * about
   * registration
   * authorization
+  * dashboard (account.php)
+  * admin panel
+
 ## Languages
   * HTML
   * CSS
@@ -20,3 +23,4 @@
 
 ## Author
  * Badretdinov Demir
+
