@@ -6,11 +6,15 @@
   * about
   * registration
   * authorization
+  * dashboard (account.php)
+  * admin panel
+
 ## Languages
   * HTML
   * CSS
   * JS
   * PHP
+  * Bootstrap
 ## Downloading
   * Code > Download ZIP
   * Download OpenServer(or another emulation localhost program)
@@ -20,3 +24,5 @@
 
 ## Author
  * Badretdinov Demir
+
+
