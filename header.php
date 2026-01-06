@@ -121,7 +121,7 @@ session_start();
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             <?php endif; ?>
-            <form id="loginForm" action="auth.php" method="post">
+            <form id="loginForm" action="functions/auth.php" method="post">
               <div class="mb-3">
                 <label for="loginEmail" class="form-label">Логин</label>
                 <input name="auth-login" type="text" class="form-control" id="loginEmail" placeholder="Логин" required>
@@ -153,7 +153,7 @@ session_start();
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <form id="registerForm" action="reg.php" method="post">
+            <form id="registerForm" action="functions/reg.php" method="post">
               <div class="mb-3">
                 <label for="registerName" class="form-label">ФИО</label>
                 <input name="reg-username" type="text" class="form-control" id="registerName" placeholder="Введите ваше ФИО" required>

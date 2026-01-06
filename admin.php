@@ -1,11 +1,15 @@
 <?php
 session_start();
-require_once "config.php";
+require_once __DIR__ . "/config.php";
 requireAuth(true); // Требуем права администратора
 
-require "conn.php";
-// Убеждаемся, что колонка job существует (один раз при загрузке страницы)
+// Подключаемся к БД
+require_once __DIR__ . "/functions/conn.php";
+
+// Убеждаемся, что колонки существуют
 ensureJobColumn($conn);
+ensureStatusColumn($conn);
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -16,9 +20,30 @@ ensureJobColumn($conn);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+      .status-badge {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+      }
+      .status-working {
+        background-color: #00ff8cff;
+        color: #ffffffff;
+      }
+      .status-vacation {
+        background-color: #ffc400ff;
+        color: #ffffffff;
+      }
+      .status-sick {
+        background-color: #ff0015ff;
+        color: #ffffffff;
+      }
+      .action-buttons {
+        min-width: 200px;
+      }
+    </style>
   </head>
   <body>
-    <?php require_once "header.php"?>
+    <?php require_once __DIR__ . "/header.php"?>
     
     <main>
       <div class="container my-5">
@@ -53,7 +78,7 @@ ensureJobColumn($conn);
             }
             
             try {
-                $sql = "SELECT id, username, email, login, job FROM users ORDER BY id DESC";
+                $sql = "SELECT id, username, email, login, job, status FROM users ORDER BY id DESC";
                 $query = $conn->prepare($sql);
                 $query->execute();
                 $users = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -69,11 +94,26 @@ ensureJobColumn($conn);
                     <th>Email</th>
                     <th>Логин</th>
                     <th>Должность</th>
+                    <th>Статус</th>
                     <th>Действия</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($users as $user): ?>
+                  <?php foreach ($users as $user): 
+                    // Определяем класс для статуса
+                    $status_class = '';
+                    $status_text = 'Работает';
+                    if ($user['status'] === 'vacation') {
+                        $status_class = 'status-vacation';
+                        $status_text = 'В отпуске';
+                    } elseif ($user['status'] === 'sick') {
+                        $status_class = 'status-sick';
+                        $status_text = 'На больничном';
+                    } elseif ($user['status'] === 'working' || $user['status'] === null) {
+                        $status_class = 'status-working';
+                        $status_text = 'Работает';
+                    }
+                  ?>
                   <tr>
                     <td><?php echo htmlspecialchars($user['id']); ?></td>
                     <td><?php echo htmlspecialchars($user['username']); ?></td>
@@ -85,9 +125,22 @@ ensureJobColumn($conn);
                       </span>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editJobModal<?php echo $user['id']; ?>">
-                        <i class="bi bi-pencil"></i> Изменить
-                      </button>
+                      <span class="badge status-badge <?php echo $status_class; ?>">
+                        <?php echo $status_text; ?>
+                      </span>
+                    </td>
+                    <td class="action-buttons">
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editJobModal<?php echo $user['id']; ?>">
+                          <i class="bi bi-pencil"></i> Должность
+                        </button>
+                        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editStatusModal<?php echo $user['id']; ?>">
+                          <i class="bi bi-person-badge"></i> Статус
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?php echo $user['id']; ?>">
+                          <i class="bi bi-trash"></i> Уволить
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   
@@ -99,7 +152,7 @@ ensureJobColumn($conn);
                           <h5 class="modal-title">Изменить должность</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-                        <form action="update_job.php" method="post">
+                        <form action="functions/update_job.php" method="post">
                           <div class="modal-body">
                             <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                             <div class="mb-3">
@@ -117,6 +170,82 @@ ensureJobColumn($conn);
                       </div>
                     </div>
                   </div>
+
+                  <!-- Модальное окно изменения статуса -->
+                  <div class="modal fade" id="editStatusModal<?php echo $user['id']; ?>" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Изменить статус</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form action="functions/update_status.php" method="post">
+                          <div class="modal-body">
+                            <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+                            <div class="mb-3">
+                              <label class="form-label">Статус пользователя: <strong><?php echo htmlspecialchars($user['username']); ?></strong></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="working<?php echo $user['id']; ?>" value="working" <?php echo ($user['status'] === 'working' || $user['status'] === null) ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="working<?php echo $user['id']; ?>">
+                                  <span class="badge status-badge status-working">Работает</span>
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="vacation<?php echo $user['id']; ?>" value="vacation" <?php echo ($user['status'] === 'vacation') ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="vacation<?php echo $user['id']; ?>">
+                                  <span class="badge status-badge status-vacation">В отпуске</span>
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="sick<?php echo $user['id']; ?>" value="sick" <?php echo ($user['status'] === 'sick') ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="sick<?php echo $user['id']; ?>">
+                                  <span class="badge status-badge status-sick">На больничном</span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-warning">Обновить статус</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Модальное окно увольнения пользователя -->
+                  <div class="modal fade" id="deleteUserModal<?php echo $user['id']; ?>" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Увольнение пользователя</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form action="functions/delete_user.php" method="post">
+                          <div class="modal-body">
+                            <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+                            <div class="alert alert-danger">
+                              <i class="bi bi-exclamation-triangle"></i>
+                              <strong>Внимание! Это действие нельзя отменить.</strong>
+                            </div>
+                            <p>Вы уверены, что хотите уволить пользователя <strong><?php echo htmlspecialchars($user['username']); ?></strong>?</p>
+                            <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+                            <p>Должность: <?php echo htmlspecialchars($user['job'] ?? 'Не указана'); ?></p>
+                            <div class="form-check mb-3">
+                              <input class="form-check-input" type="checkbox" name="confirm_delete" id="confirmDelete<?php echo $user['id']; ?>" required>
+                              <label class="form-check-label" for="confirmDelete<?php echo $user['id']; ?>">
+                                Да, я подтверждаю увольнение этого сотрудника
+                              </label>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-danger">Уволить</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                   <?php endforeach; ?>
                 </tbody>
               </table>
@@ -125,6 +254,11 @@ ensureJobColumn($conn);
               <p class="text-muted">
                 <i class="bi bi-info-circle"></i> Всего пользователей: <strong><?php echo count($users); ?></strong>
               </p>
+              <div class="d-flex gap-2">
+                <span class="badge status-badge status-working">Работает</span>
+                <span class="badge status-badge status-vacation">В отпуске</span>
+                <span class="badge status-badge status-sick">На больничном</span>
+              </div>
             </div>
             <?php
                 else:
@@ -149,5 +283,3 @@ ensureJobColumn($conn);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
-
-

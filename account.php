@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once "config.php";
-require_once "conn.php";
+require_once __DIR__ . "/config.php";
+require_once __DIR__ . "/functions/conn.php";
 
 // Проверка авторизации с помощью функции из config.php
 if (!isLoggedIn()) {
-    header('Location: /index.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -36,7 +36,7 @@ try {
         // Если пользователь не найден в БД - выходим
         if (!$user) {
             session_destroy();
-            header('Location: /index.php');
+            header('Location: index.php');
             exit;
         }
         
@@ -252,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <title>Личный кабинет | Школа №12 НГО</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <style>
         .profile-card {
             max-width: 500px;
@@ -274,7 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     unset($_SESSION['error']);
     unset($_SESSION['success']);
     
-    include 'header.php'; 
+    include __DIR__ . '/header.php'; 
     
     // Восстанавливаем ошибки после подключения header.php
     if ($temp_error) {
@@ -340,16 +340,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="card-footer text-center">
-                        <small class="text-muted">
-                            <i class="bi bi-calendar3 me-1"></i>
-                            <?php if (isset($user['created_at']) && $user['created_at']): ?>
-                                Зарегистрирован: <?php echo date('d.m.Y', strtotime($user['created_at'])); ?>
-                            <?php else: ?>
-                                Пользователь системы
-                            <?php endif; ?>
-                        </small>
-                    </div>
+
                 </div>
             </div>
         </div>

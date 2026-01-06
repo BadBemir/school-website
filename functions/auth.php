@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "config.php";
+require_once dirname(__DIR__) . "/config.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['auth-login'], $_POST['auth-password'])) {
@@ -10,16 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Валидация данных
         if (!validateLength($login, MIN_LOGIN_LENGTH)) {
             setError("Логин должен содержать не менее " . MIN_LOGIN_LENGTH . " символов");
-            header('Location: /index.php');
+            header('Location: ../index.php');
             exit;
         }
         if (!validateLength($password, MIN_PASSWORD_LENGTH)) {
             setError("Пароль должен содержать не менее " . MIN_PASSWORD_LENGTH . " символов");
-            header('Location: /index.php');
+            header('Location: ../index.php');
             exit;
         }
 
-        require "conn.php";
+        require_once dirname(__DIR__) . "/functions/conn.php";
 
         try {
             // Специальная проверка для администратора
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['auth'] = true;
                 $_SESSION['is_admin'] = true;
                 
-                header('Location: /index.php');
+                header('Location: ../index.php');
                 exit;
             }
             
@@ -54,31 +54,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['is_admin'] = false;
                     
                     // Перенаправление на главную страницу
-                    header('Location: /index.php');
+                    header('Location: ../index.php');
                     exit;
                 } else {
                     setError("Неверный пароль!");
-                    header('Location: /index.php');
+                    header('Location: ../index.php');
                     exit;
                 }
             } else {
                 setError("Пользователь с таким логином не найден!");
-                header('Location: /index.php');
+                header('Location: ../index.php');
                 exit;
             }
         } catch (PDOException $e) {
             setError("Ошибка базы данных. Попробуйте позже.");
-            header('Location: /index.php');
+            header('Location: ../index.php');
             exit;
         }
     } else {
         setError("Не все поля заполнены!");
-        header('Location: /index.php');
+        header('Location: ../index.php');
         exit;
     }
 } else {
     setError("Неверный метод запроса!");
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>
