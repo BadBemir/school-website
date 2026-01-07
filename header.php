@@ -14,12 +14,10 @@ session_start();
      <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <!-- Бренд слева -->
       <a class="navbar-brand fs-4 fw-bold" href="index.php">
         <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
       </a>
 
-      <!-- Кнопка для мобильных -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,7 +28,6 @@ session_start();
             <a class="nav-link" href="index.php">Главная</a>
           </li>
           
-          <!-- Выпадающий список "О школе" -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="about.php" id="aboutDropdown" 
                role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,13 +48,11 @@ session_start();
 
         <div class="d-flex align-items-center">
           <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
-            <!-- Пользователь авторизован - показываем имя и кнопку выхода -->
             <div class="dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
-                <!-- Кнопка личного кабинета -->
                 <li>
                   <a class="dropdown-item" href="account.php">
                     <i class="bi bi-person-badge"></i> Личный кабинет
@@ -81,7 +76,6 @@ session_start();
               </ul>
             </div>
           <?php else: ?>
-            <!-- Пользователь не авторизован - показываем кнопку входа/регистрации -->
             <div class="dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 <i class="bi bi-person-circle"></i> Войти
@@ -106,122 +100,122 @@ session_start();
   </nav>
 </header>
     
-    <!-- Модальное окно входа -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Вход в систему</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Вход в систему</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <?php if (isset($_SESSION['auth_error'])): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="loginError">
+            <i class="bi bi-exclamation-triangle-fill"></i> <?php echo htmlspecialchars($_SESSION['auth_error']); ?>
+            <button type="button" class="btn-close" onclick="clearAuthError()" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <?php if (isset($_SESSION['error'])): ?>
-              <div class="alert alert-danger alert-dismissible fade show" role="alert" id="loginError">
-                <i class="bi bi-exclamation-triangle-fill"></i> <?php echo htmlspecialchars($_SESSION['error']); ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            <?php endif; ?>
-            <form id="loginForm" action="functions/auth.php" method="post">
-              <div class="mb-3">
-                <label for="loginEmail" class="form-label">Логин</label>
-                <input name="auth-login" type="text" class="form-control" id="loginEmail" placeholder="Логин" required>
-              </div>
-              <div class="mb-3">
-                <label for="loginPassword" class="form-label">Пароль</label>
-                <input name="auth-password" type="password" class="form-control" id="loginPassword" placeholder="Введите пароль" required>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Войти</button>
-            </form>
+        <?php endif; ?>
+        <form id="loginForm" action="functions/auth.php" method="post">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Логин</label>
+            <input name="auth-login" type="text" class="form-control" id="loginEmail" placeholder="Логин" required>
           </div>
-          <div class="modal-footer">
-            <p class="text-muted small mb-0">Нет аккаунта? 
-              <a href="#" class="link-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">
-                Зарегистрируйтесь
-              </a>
-            </p>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Пароль</label>
+            <input name="auth-password" type="password" class="form-control" id="loginPassword" placeholder="Введите пароль" required>
           </div>
-        </div>
+          <button type="submit" class="btn btn-primary w-100">Войти</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-muted small mb-0">Нет аккаунта? 
+          <a href="#" class="link-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">
+            Зарегистрируйтесь
+          </a>
+        </p>
       </div>
     </div>
-    
-    <!-- Модальное окно регистрации -->
-    <div class="modal fade" id="registerModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Регистрация</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Регистрация</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <?php if (isset($_SESSION['reg_error'])): ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="registerError">
+            <i class="bi bi-exclamation-triangle-fill"></i> <?php echo htmlspecialchars($_SESSION['reg_error']); ?>
+            <button type="button" class="btn-close" onclick="clearRegError()" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <form id="registerForm" action="functions/reg.php" method="post">
-              <div class="mb-3">
-                <label for="registerName" class="form-label">ФИО</label>
-                <input name="reg-username" type="text" class="form-control" id="registerName" placeholder="Введите ваше ФИО" required>
-              </div>
-              <div class="mb-3">
-                <label for="registerEmail" class="form-label">Email</label>
-                <input name="reg-email" type="email" class="form-control" id="registerEmail" placeholder="example@mail.ru" required>
-              </div>
-              <div class="mb-3">
-                <label for="registerLogin" class="form-label">Логин</label>
-                <input name="reg-login" type="text" class="form-control" id="registerLogin" placeholder="Придумайте логин" required>
-              </div>
-              <div class="mb-3">
-                <label for="registerPassword" class="form-label">Пароль</label>
-                <input name="reg-password" type="password" class="form-control" id="registerPassword" placeholder="Не менее 6 символов" required>
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="acceptTerms" required>
-                <label class="form-check-label" for="acceptTerms">Я согласен с условиями использования</label>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
-            </form>
+        <?php endif; ?>
+        <form id="registerForm" action="functions/reg.php" method="post">
+          <div class="mb-3">
+            <label for="registerName" class="form-label">ФИО</label>
+            <input name="reg-username" type="text" class="form-control" id="registerName" placeholder="Введите ваше ФИО" required>
           </div>
-          <div class="modal-footer">
-            <p class="text-muted small mb-0">Уже есть аккаунт? 
-              <a href="#" class="link-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">
-                Войдите
-              </a>
-            </p>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email</label>
+            <input name="reg-email" type="email" class="form-control" id="registerEmail" placeholder="example@mail.ru" required>
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="registerLogin" class="form-label">Логин</label>
+            <input name="reg-login" type="text" class="form-control" id="registerLogin" placeholder="Придумайте логин" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Пароль</label>
+            <input name="reg-password" type="password" class="form-control" id="registerPassword" placeholder="Не менее 6 символов" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+            <label class="form-check-label" for="acceptTerms">Я согласен с условиями использования</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-muted small mb-0">Уже есть аккаунт? 
+          <a href="#" class="link-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">
+            Войдите
+          </a>
+        </p>
       </div>
     </div>
-    
-    <script>
-      // Автоматически открываем модальное окно входа, если есть ошибка
-      // НО ТОЛЬКО НА ГЛАВНОЙ СТРАНИЦЕ (index.php) И НА СТРАНИЦАХ ГДЕ НЕТ ЛИЧНОГО КАБИНЕТА
-      <?php 
-      $current_page = basename($_SERVER['PHP_SELF']);
-      if (isset($_SESSION['error']) && $current_page !== 'account.php'): 
-      ?>
-      (function() {
-        function openLoginModal() {
-          if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-            loginModal.show();
-          } else {
-            // Если Bootstrap еще не загружен, ждем
-            setTimeout(openLoginModal, 100);
-          }
-        }
+  </div>
+</div>
 
-        // Пытаемся открыть модальное окно после загрузки DOM
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', openLoginModal);
-        } else {
-          // DOM уже загружен, но Bootstrap может быть еще не загружен
-          openLoginModal();
-        }
-        
-      })();
-
-      <?php 
-        // Очищаем ошибку после отображения (только на главной)
-        if ($current_page === 'index.php') {
-          unset($_SESSION['error']);
-        }
-      endif; ?>
-    </script>
+<script>
+  <?php if (isset($_SESSION['reg_error'])): ?>
+  document.addEventListener('DOMContentLoaded', function() {
+    const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+    registerModal.show();
+  });
+  <?php endif; ?>
+  
+  <?php if (isset($_SESSION['auth_error'])): ?>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    loginModal.show();
+  });
+  <?php endif; ?>
+  
+  function clearAuthError() {
+    fetch('functions/clear_errors.php?type=auth_error');
+  }
+  
+  function clearRegError() {
+    fetch('functions/clear_errors.php?type=reg_error');
+  }
+  
+  document.getElementById('loginModal').addEventListener('hidden.bs.modal', function () {
+    clearAuthError();
+  });
+  
+  document.getElementById('registerModal').addEventListener('hidden.bs.modal', function () {
+    clearRegError();
+  });
+</script>
 </body>
 </html>

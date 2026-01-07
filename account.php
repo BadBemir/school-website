@@ -3,18 +3,14 @@ session_start();
 require_once __DIR__ . "/config.php";
 require_once __DIR__ . "/functions/conn.php";
 
-// Проверка авторизации с помощью функции из config.php
 if (!isLoggedIn()) {
     header('Location: index.php');
     exit;
 }
 
-// Убеждаемся, что колонка job существует
 ensureJobColumn($conn);
 
-// Получаем информацию о пользователе из базы данных
 try {
-    // Если это администратор из auth.php (с id = 0), не ищем в БД
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0) {
         $user = [
             'username' => $_SESSION['username'],
@@ -24,28 +20,23 @@ try {
         ];
         $user['created_at'] = date('Y-m-d H:i:s');
     } else {
-        // Для обычных пользователей ищем в БД
         $user_id = $_SESSION['user_id'];
         
-        // Получаем данные пользователя, включая должность
         $sql = "SELECT id, username, email, login, job FROM users WHERE id = ?";
         $query = $conn->prepare($sql);
         $query->execute([$user_id]);
         $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        // Если пользователь не найден в БД - выходим
         if (!$user) {
             session_destroy();
             header('Location: index.php');
             exit;
         }
         
-        // Если поле job пустое, устанавливаем значение по умолчанию
         if (empty($user['job'])) {
             $user['job'] = 'Не указано';
         }
         
-        // Пробуем получить дату создания (если поле существует)
         try {
             $date_sql = "SELECT created_at FROM users WHERE id = ?";
             $date_query = $conn->prepare($date_sql);
@@ -58,12 +49,10 @@ try {
                 $user['created_at'] = date('Y-m-d H:i:s');
             }
         } catch (PDOException $e) {
-            // Если поле created_at не существует, используем текущую дату
             $user['created_at'] = date('Y-m-d H:i:s');
         }
     }
 } catch (PDOException $e) {
-    // Если ошибка БД, используем данные из сессии
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0) {
         $user = [
             'username' => $_SESSION['username'],
@@ -74,7 +63,6 @@ try {
         ];
     } else {
         setError("Ошибка загрузки данных профиля");
-        // Используем данные из сессии
         $user = [
             'username' => $_SESSION['username'] ?? 'Пользователь',
             'email' => $_SESSION['email'] ?? 'Не указан',
@@ -85,41 +73,34 @@ try {
     }
 }
 
-// Обработка формы редактирования профиля (только для обычных пользователей)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     
     if ($_POST['action'] === 'update_profile') {
-        // Для администратора (id = 0) отключаем редактирование профиля
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0) {
             setError("Редактирование профиля администратора недоступно");
             header('Location: account.php');
             exit;
         }
         
-        // Валидация данных
         $new_username = sanitizeString($_POST['username'] ?? '');
         $new_email = sanitizeString($_POST['email'] ?? '');
         $new_login = sanitizeString($_POST['login'] ?? '');
-        $new_job = sanitizeString($_POST['job'] ?? ''); // Добавляем поле должности
+        $new_job = sanitizeString($_POST['job'] ?? '');
         
         $errors = [];
         
-        // Проверка ФИО
         if (!validateLength($new_username, MIN_USERNAME_LENGTH)) {
             $errors[] = "ФИО должно содержать не менее " . MIN_USERNAME_LENGTH . " символов";
         }
         
-        // Проверка email
         if (!validateEmail($new_email)) {
             $errors[] = "Введите корректный email адрес";
         }
         
-        // Проверка логина
         if (!validateLength($new_login, MIN_LOGIN_LENGTH)) {
             $errors[] = "Логин должен содержать не менее " . MIN_LOGIN_LENGTH . " символов";
         }
         
-        // Проверка уникальности логина (если изменился)
         if ($new_login !== $_SESSION['login']) {
             try {
                 $check_sql = "SELECT id FROM users WHERE login = ? AND id != ?";
@@ -133,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
         
-        // Проверка уникальности email (если изменился)
         if ($new_email !== $_SESSION['email']) {
             try {
                 $check_sql = "SELECT id FROM users WHERE email = ? AND id != ?";
@@ -147,21 +127,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
         
-        // Если нет ошибок, обновляем данные в БД
         if (empty($errors)) {
             try {
-                // Обновляем данные пользователя в базе данных
                 $update_sql = "UPDATE users SET username = ?, email = ?, login = ?, job = ? WHERE id = ?";
                 $update_query = $conn->prepare($update_sql);
                 $result = $update_query->execute([$new_username, $new_email, $new_login, $new_job, $_SESSION['user_id']]);
                 
                 if ($result) {
-                    // Обновляем данные в сессии
                     $_SESSION['username'] = $new_username;
                     $_SESSION['email'] = $new_email;
                     $_SESSION['login'] = $new_login;
                     
-                    // Обновляем данные в переменной $user для отображения на странице
                     $user['username'] = $new_username;
                     $user['email'] = $new_email;
                     $user['login'] = $new_login;
@@ -169,7 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     
                     setSuccess("Профиль успешно обновлен!");
                     
-                    // Перезагружаем страницу для обновления данных
                     header('Location: account.php');
                     exit;
                 } else {
@@ -184,7 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
     
     if ($_POST['action'] === 'change_password') {
-        // Для администратора отключаем смену пароля
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0) {
             setError("Смена пароля администратора недоступна");
             header('Location: account.php');
@@ -197,7 +171,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         
         $errors = [];
         
-        // Проверка нового пароля
         if (!validateLength($new_password, MIN_PASSWORD_LENGTH)) {
             $errors[] = "Новый пароль должен содержать не менее " . MIN_PASSWORD_LENGTH . " символов";
         }
@@ -208,18 +181,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         
         if (empty($errors)) {
             try {
-                // Получаем текущий пароль из БД
                 $password_sql = "SELECT password FROM users WHERE id = ?";
                 $password_query = $conn->prepare($password_sql);
                 $password_query->execute([$_SESSION['user_id']]);
                 $db_password = $password_query->fetchColumn();
                 
-                // Проверяем текущий пароль
                 if (password_verify($current_password, $db_password)) {
-                    // Хэшируем новый пароль
                     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
                     
-                    // Обновляем пароль в БД
                     $update_sql = "UPDATE users SET password = ? WHERE id = ?";
                     $update_query = $conn->prepare($update_sql);
                     $result = $update_query->execute([$hashed_password, $_SESSION['user_id']]);
@@ -266,17 +235,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 </head>
 <body>
     <?php 
-    // Временно сохраняем ошибки из сессии
     $temp_error = isset($_SESSION['error']) ? $_SESSION['error'] : null;
     $temp_success = isset($_SESSION['success']) ? $_SESSION['success'] : null;
     
-    // Очищаем ошибки в сессии перед подключением header.php
     unset($_SESSION['error']);
     unset($_SESSION['success']);
     
     include __DIR__ . '/header.php'; 
     
-    // Восстанавливаем ошибки после подключения header.php
     if ($temp_error) {
         $_SESSION['error'] = $temp_error;
     }
@@ -286,7 +252,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     ?>
 
     <main class="container py-5">
-        <!-- Сообщения об ошибках/успехе -->
         <?php if ($error = getError()): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i><?php echo $error; ?>
@@ -302,7 +267,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         <?php endif; ?>
 
         <div class="row justify-content-center">
-            <!-- Центрированная карточка профиля -->
             <div class="col-md-6">
                 <div class="card shadow profile-card">
                     <div class="card-header bg-primary text-white">
@@ -318,7 +282,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <p class="text-muted mb-1">Логин: <?php echo htmlspecialchars($user['login']); ?></p>
                         <p class="text-muted mb-1">Email: <?php echo htmlspecialchars($user['email']); ?></p>
                         
-                        <!-- Отображение должности вместо роли -->
                         <div class="my-3">
                             <span class="badge bg-info job-badge">
                                 <i class="bi bi-briefcase me-1"></i><?php echo htmlspecialchars($user['job']); ?>
@@ -346,7 +309,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         </div>
     </main>
 
-    <!-- Модальное окно редактирования профиля -->
     <?php if (!(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0)): ?>
     <div class="modal fade" id="editProfileModal" tabindex="-1">
         <div class="modal-dialog">
@@ -391,7 +353,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         </div>
     </div>
 
-    <!-- Модальное окно смены пароля -->
     <div class="modal fade" id="changePasswordModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -426,7 +387,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        // Автоматически открываем модальное окно при наличии ошибки в форме
         document.addEventListener('DOMContentLoaded', function() {
             <?php if (isset($_SESSION['error']) && isset($_POST['action'])): ?>
                 <?php if ($_POST['action'] === 'update_profile'): ?>

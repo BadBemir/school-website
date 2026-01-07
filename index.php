@@ -11,7 +11,32 @@
   
   <body>
       
-    <?php require_once "header.php"?>
+    <?php 
+    session_start();
+    require_once "config.php";
+    require_once "header.php"; 
+    
+    $general_success = getSuccess();
+    $general_error = getError();
+    ?>
+    
+    <?php if ($general_success || $general_error): ?>
+    <div class="container mt-3">
+        <?php if ($general_success): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i><?php echo htmlspecialchars($general_success); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php endif; ?>
+        
+        <?php if ($general_error): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i><?php echo htmlspecialchars($general_error); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
     
     <main>
       <!-- Hero Section -->
