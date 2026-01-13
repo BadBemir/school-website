@@ -12,7 +12,7 @@ function isAdmin() {
     return isLoggedIn() && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
 }
 
-function requireAuth($requireAdmin = false, $redirectUrl = '/index.php') {
+function requireAuth($requireAdmin = false, $redirectUrl = '/') {
     if (!isLoggedIn()) {
         header('Location: ' . $redirectUrl);
         exit;

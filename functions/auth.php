@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!validateLength($login, MIN_LOGIN_LENGTH)) {
             $_SESSION['auth_error'] = "Логин должен содержать не менее " . MIN_LOGIN_LENGTH . " символов";
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
         if (!validateLength($password, MIN_PASSWORD_LENGTH)) {
             $_SESSION['auth_error'] = "Пароль должен содержать не менее " . MIN_PASSWORD_LENGTH . " символов";
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['is_admin'] = true;
                 
                 setSuccess("Вы успешно вошли как администратор!");
-                header('Location: ../index.php');
+                header('Location: ../');
                 exit;
             }
             
@@ -49,31 +49,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['is_admin'] = false;
                     
                     setSuccess("Вы успешно вошли в систему!");
-                    header('Location: ../index.php');
+                    header('Location: ../');
                     exit;
                 } else {
                     $_SESSION['auth_error'] = "Неверный пароль!";
-                    header('Location: ../index.php');
+                    header('Location: ../');
                     exit;
                 }
             } else {
                 $_SESSION['auth_error'] = "Пользователь с таким логином не найден!";
-                header('Location: ../index.php');
+                header('Location: ../');
                 exit;
             }
         } catch (PDOException $e) {
             $_SESSION['auth_error'] = "Ошибка базы данных. Попробуйте позже.";
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
     } else {
         $_SESSION['auth_error'] = "Не все поля заполнены!";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
 } else {
     $_SESSION['auth_error'] = "Неверный метод запроса!";
-    header('Location: ../index.php');
+    header('Location: ../');
     exit;
 }
 ?>

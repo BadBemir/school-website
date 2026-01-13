@@ -1,0 +1,685 @@
+/* Основные стили для сайта школы - Bootstrap 5 версия */
+:root {
+    --school-blue: #1e3a8a;
+    --school-light-blue: #3b82f6;
+    --school-green: #10b981;
+    --school-orange: #f97316;
+    --school-yellow: #fbbf24;
+    --school-red: #ef4444;
+    --school-gray: #6b7280;
+    --school-light: #f8fafc;
+    --border-radius: 8px;
+}
+
+/* Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Контейнеры */
+.container {
+    max-width: 1200px;
+}
+
+/* Заголовки */
+.display-4 {
+    color: var(--school-blue);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h1, h2, h4,h6{
+    font-weight: 700;
+    color: var(--school-blue);
+    margin-bottom: 1rem;
+}
+
+h3,h5{
+    color: var(--school-light);
+}
+h2 {
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+
+
+/* Навигация */
+.navbar {
+    background: linear-gradient(135deg, var(--school-blue), #1e40af) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white !important;
+}
+
+.navbar-brand i {
+    color: var(--school-yellow);
+    margin-right: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    margin: 0 0.25rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.navbar-nav .nav-item.dropdown .nav-link {
+    background-color: transparent !important;
+}
+
+/* Кнопки */
+.btn {
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--school-blue), var(--school-light-blue));
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--school-blue);
+    border: 2px solid var(--school-blue);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--school-blue);
+    color: white;
+    border-color: var(--school-blue);
+    transform: translateY(-1px);
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* Герой-секция */
+.hero-section {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(16, 185, 129, 0.05));
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.hero-section h1 {
+    color: var(--school-blue);
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+}
+
+/* Карточки */
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-color: var(--school-light-blue);
+}
+
+
+
+.card-header {
+    background: linear-gradient(135deg, var(--school-blue), #1e40af);
+    color: white;
+    border-bottom: none;
+    border-color: var(--school-light-blue);
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+}
+.card-header > h5{
+    color: white;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--school-blue);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Таблицы */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.table th {
+    background-color: var(--school-blue);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    border-color: #e5e7eb;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(30, 58, 138, 0.05);
+}
+
+.table-responsive {
+    border-radius: var(--border-radius);
+}
+
+/* Формы */
+.form-control {
+    border: 1px solid #d1d5db;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--school-light-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: var(--school-blue);
+    border-color: var(--school-blue);
+}
+
+/* Модальные окна */
+.modal-content {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--school-blue), #1e40af);
+    color: white;
+    border-bottom: none;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    padding: 1.25rem 1.5rem;
+}
+
+
+.modal-title {
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 1.5rem;
+}
+
+.btn-close {
+    filter: invert(1) brightness(2);
+}
+
+/* Футер */
+footer {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: white;
+    margin-top: 4rem;
+    padding: 3rem 0 2rem;
+}
+
+footer h5 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--school-light-blue);
+    border-radius: 2px;
+}
+
+footer p, footer small {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 0.75rem;
+}
+
+footer .bi {
+    color: var(--school-light-blue);
+    margin-right: 0.5rem;
+}
+
+/* Бейджи */
+.badge {
+    padding: 0.35rem 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.bg-primary {
+    background-color: var(--school-blue) !important;
+}
+
+.bg-success {
+    background-color: var(--school-green) !important;
+}
+
+.bg-danger {
+    background-color: var(--school-red) !important;
+}
+
+.bg-warning {
+    background-color: var(--school-yellow) !important;
+    color: #1f2937 !important;
+}
+
+.bg-info {
+    background-color: var(--school-light-blue) !important;
+}
+
+/* Уведомления */
+.alert {
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--school-green);
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--school-red);
+}
+
+.alert-info {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-left: 4px solid var(--school-light-blue);
+}
+
+/* Контакты */
+.contact-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-icon {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.map-container {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+/* Панель администратора */
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.status-working {
+    background-color: var(--school-green) !important;
+    color: white !important;
+}
+
+.status-vacation {
+    background-color: var(--school-yellow) !important;
+    color: #1f2937 !important;
+}
+
+.status-sick {
+    background-color: var(--school-red) !important;
+    color: white !important;
+}
+
+/* Дропдауны */
+.dropdown-menu {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #374151;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin: 0 0.25rem;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(30, 58, 138, 0.1);
+    color: var(--school-blue);
+}
+
+.dropdown-item:active {
+    background-color: var(--school-blue);
+    color: white;
+}
+
+/* Разделители */
+hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* Отступы */
+.mt-section {
+    margin-top: 4rem;
+}
+
+.mb-section {
+    margin-bottom: 4rem;
+}
+
+.p-section {
+    padding: 4rem 0;
+}
+
+/* Тени */
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shadow-lg {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Иконки */
+.bi {
+    vertical-align: -0.125em;
+}
+
+.text-primary {
+    color: var(--school-blue) !important;
+}
+
+.text-success {
+    color: var(--school-green) !important;
+}
+
+.text-danger {
+    color: var(--school-red) !important;
+}
+
+.text-warning {
+    color: var(--school-yellow) !important;
+}
+
+/* Фон */
+.bg-primary {
+    background-color: var(--school-blue) !important;
+}
+
+.bg-light {
+    background-color: var(--school-light) !important;
+}
+
+/* Градиенты */
+.gradient-primary {
+    background: linear-gradient(135deg, var(--school-blue), var(--school-light-blue));
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, var(--school-green), #34d399);
+}
+
+/* Списки */
+.list-unstyled li {
+    margin-bottom: 0.75rem;
+}
+
+.list-group-item {
+    border-color: #e5e7eb;
+    padding: 1rem 1.25rem;
+    color: #4b5563;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.list-group-item:last-child {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+/* Специальные стили для школы */
+.school-logo {
+    color: var(--school-blue);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.school-accent {
+    color: var(--school-green);
+}
+
+.school-highlight {
+    background-color: rgba(16, 185, 129, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: var(--school-green);
+    font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.25rem;
+    }
+    
+    .btn-lg {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.875rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+    
+    footer {
+        padding: 2rem 0 1.5rem;
+    }
+}
+
+/* Печатные стили */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        color: black;
+        background: white;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .btn {
+        display: none;
+    }
+}

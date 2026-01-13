@@ -16,7 +16,7 @@ ensureStatusColumn($conn);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Панель администратора</title>
+    <title>Школа 12 - Панель администратора</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/main.css">
@@ -44,12 +44,12 @@ ensureStatusColumn($conn);
   </head>
   <body>
     <?php require_once __DIR__ . "/header.php"?>
-    
+
     <main>
       <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2 class="mb-0"><i class="bi bi-shield-check"></i> Панель администратора</h2>
-          <a href="index.php" class="btn btn-outline-secondary">
+          <a href="/" class="btn btn-outline-secondary">
             <i class="bi bi-arrow-left"></i> На главную
           </a>
         </div>
@@ -63,7 +63,7 @@ ensureStatusColumn($conn);
             // Показываем сообщения об успехе/ошибке
             $success = getSuccess();
             $error = getError();
-            
+
             if ($success) {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
                 echo '<i class="bi bi-check-circle"></i> ' . htmlspecialchars($success);
@@ -76,13 +76,13 @@ ensureStatusColumn($conn);
                 echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                 echo '</div>';
             }
-            
+
             try {
                 $sql = "SELECT id, username, email, login, job, status FROM users ORDER BY id DESC";
                 $query = $conn->prepare($sql);
                 $query->execute();
                 $users = $query->fetchAll(PDO::FETCH_ASSOC);
-                
+
                 if (count($users) > 0):
             ?>
             <div class="table-responsive">
@@ -99,7 +99,7 @@ ensureStatusColumn($conn);
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($users as $user): 
+                  <?php foreach ($users as $user):
                     // Определяем класс для статуса
                     $status_class = '';
                     $status_text = 'Работает';
@@ -143,7 +143,7 @@ ensureStatusColumn($conn);
                       </div>
                     </td>
                   </tr>
-                  
+
                   <!-- Модальное окно редактирования должности -->
                   <div class="modal fade" id="editJobModal<?php echo $user['id']; ?>" tabindex="-1">
                     <div class="modal-dialog">
@@ -157,8 +157,8 @@ ensureStatusColumn($conn);
                             <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                             <div class="mb-3">
                               <label for="job<?php echo $user['id']; ?>" class="form-label">Должность пользователя: <strong><?php echo htmlspecialchars($user['username']); ?></strong></label>
-                              <input type="text" class="form-control" id="job<?php echo $user['id']; ?>" name="job" 
-                                     value="<?php echo htmlspecialchars($user['job'] ?? ''); ?>" 
+                              <input type="text" class="form-control" id="job<?php echo $user['id']; ?>" name="job"
+                                     value="<?php echo htmlspecialchars($user['job'] ?? ''); ?>"
                                      placeholder="Введите должность">
                             </div>
                           </div>
@@ -279,7 +279,7 @@ ensureStatusColumn($conn);
       </div>
     </main>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

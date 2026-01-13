@@ -15,7 +15,7 @@
                 <h5 class="mb-3">Быстрые ссылки</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="index.php" class="text-decoration-none">
+                        <a href="/" class="text-decoration-none">
                             <i class="bi bi-house me-2"></i>Главная
                         </a>
                     </li>

@@ -1,6 +1,5 @@
-<?php
-session_start();
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@ session_start();
      <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand fs-4 fw-bold" href="index.php">
+      <a class="navbar-brand fs-4 fw-bold" href="/">
         <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
       </a>
 
@@ -25,7 +24,7 @@ session_start();
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav fs-5">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Главная</a>
+            <a class="nav-link" href="/">Главная</a>
           </li>
           
           <li class="nav-item dropdown">
@@ -151,7 +150,7 @@ session_start();
             <button type="button" class="btn-close" onclick="clearRegError()" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         <?php endif; ?>
-        <form id="registerForm" action="functions/reg.php" method="post">
+        <form id="registerForm" action="/functions/reg.php" method="post">
           <div class="mb-3">
             <label for="registerName" class="form-label">ФИО</label>
             <input name="reg-username" type="text" class="form-control" id="registerName" placeholder="Введите ваше ФИО" required>
@@ -216,6 +215,8 @@ session_start();
   document.getElementById('registerModal').addEventListener('hidden.bs.modal', function () {
     clearRegError();
   });
+  
+ 
 </script>
 </body>
 </html>

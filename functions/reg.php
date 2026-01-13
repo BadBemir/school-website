@@ -10,28 +10,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = trim($_POST['reg-password']);
     } else {
         $_SESSION['reg_error'] = "Не все поля заполнены!";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
 
     if (!validateLength($username, MIN_USERNAME_LENGTH)) {
         $_SESSION['reg_error'] = "Имя должно содержать не менее " . MIN_USERNAME_LENGTH . " символов";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
     if (!validateEmail($email)) {
         $_SESSION['reg_error'] = "Почта указана неверно";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
     if (!validateLength($login, MIN_LOGIN_LENGTH)) {
         $_SESSION['reg_error'] = "Логин должен содержать не менее " . MIN_LOGIN_LENGTH . " символов";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
     if (!validateLength($password, MIN_PASSWORD_LENGTH)) {
         $_SESSION['reg_error'] = "Пароль должен содержать не менее " . MIN_PASSWORD_LENGTH . " символов";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } elseif ($existing_user['email'] === $email) {
                 $_SESSION['reg_error'] = "Пользователь с таким email уже существует!";
             }
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
 
@@ -63,22 +63,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($query->rowCount() > 0) {
             setSuccess("Регистрация прошла успешно! Теперь вы можете войти в систему.");
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         } else {
             $_SESSION['reg_error'] = "Ошибка при регистрации пользователя!";
-            header('Location: ../index.php');
+            header('Location: ../');
             exit;
         }
         
     } catch (PDOException $e) {
         $_SESSION['reg_error'] = "Ошибка базы данных. Попробуйте позже.";
-        header('Location: ../index.php');
+        header('Location: ../');
         exit;
     }
 } else {
     $_SESSION['reg_error'] = "Неверный метод запроса!";
-    header('Location: ../index.php');
+    header('Location: ../');
     exit;
 }
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Подключение к базе данных
 $servername = "localhost";
 $dbusername = "root";
@@ -15,4 +15,3 @@ try {
 } catch (PDOException $e) {
     die("Ошибка подключения к базе данных: " . $e->getMessage());
 }
-
