@@ -72,17 +72,14 @@ $general_error = getError();
             <div class="card h-100 shadow-sm">
               <div class="position-relative">
                 <img src="images/prof.webp" class="card-img-top" alt="Актовый зал Школа 12">
-                <span class="badge bg-danger position-absolute top-0 start-0 m-3">Горячее</span>
               </div>
               <div class="card-body d-flex flex-column">
                 <div class="mb-2">
-                  <span class="badge bg-light text-dark me-2">Категория</span>
                   <small class="text-muted">12 декабря 2023</small>
                 </div>
                 <h5 class="card-title fw-bold">Профориентационный классный час</h5>
                 <p class="card-text flex-grow-1">22 декабря среди 9-х и 11-х классов прошел профориентационный классный час с сотрудником следственного отдела: «Следственный отдел по г. Находка следственного управления Следственного комитета Российской Федерации по Приморскому краю» Кужель Анной Владимировной.</p>
                 <div class="mt-auto">
-                  <a href="#" class="btn btn-outline-primary w-100">Подробнее</a>
                 </div>
               </div>
             </div>
@@ -93,13 +90,11 @@ $general_error = getError();
               <img src="images/conf.jpg" class="card-img-top" alt="Актовый зал НГГПК">
               <div class="card-body d-flex flex-column">
                 <div class="mb-2">
-                  <span class="badge bg-info me-2">Акция</span>
                   <small class="text-muted">10 декабря 2023</small>
                 </div>
                 <h5 class="card-title fw-bold">Профессии моего города</h5>
                 <p class="card-text flex-grow-1">Сегодня ученики 5Б класса приняли участие в интерактивной игре «Профессии моего города», проходившей в актовом зале НГГПК.</p>
                 <div class="mt-auto">
-                  <a href="#" class="btn btn-outline-primary w-100">Подробнее</a>
                 </div>
               </div>
             </div>
@@ -110,13 +105,12 @@ $general_error = getError();
               <img src="images/classroom.jpeg" class="card-img-top" alt="Новость">
               <div class="card-body d-flex flex-column">
                 <div class="mb-2">
-                  <span class="badge bg-success me-2">Обновление</span>
+
                   <small class="text-muted">8 декабря 2023</small>
                 </div>
                 <h5 class="card-title fw-bold">Мои финансы</h5>
                 <p class="card-text flex-grow-1">18 декабря 2025 года ученики 6-го «Г» класса приняли участие в занятии по материалам Всероссийской просветительской эстафеты «Мои финансы», посвящённом рациональному потреблению товаров и услуг.</p>
                 <div class="mt-auto">
-                  <a href="#" class="btn btn-outline-primary w-100">Подробнее</a>
                 </div>
               </div>
             </div>
