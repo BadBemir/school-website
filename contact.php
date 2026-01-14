@@ -140,22 +140,22 @@ $general_error = getError();
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <div class="p-3 rounded-3" style="background: rgba(16, 185, 129, 0.1);">
-                                    <i class="bi bi-taxi-front fs-1 text-success mb-3"></i>
+                                <div class="p-3 rounded-3" style="background: rgba(59, 130, 246, 0.1);">
+                                    <i class="bi bi-taxi-front fs-1 text-primary mb-3"></i>
                                     <h6>Такси</h6>
                                     <p class="small mb-0">Проспект мира 10</p>
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <div class="p-3 rounded-3" style="background: rgba(245, 158, 11, 0.1);">
-                                    <i class="bi bi-car-front fs-1 text-warning mb-3"></i>
+                                <div class="p-3 rounded-3" style="background: rgba(59, 130, 246, 0.1);">
+                                    <i class="bi bi-car-front fs-1 text-primary mb-3"></i>
                                     <h6>Автомобиль</h6>
                                     <p class="small mb-0">Парковка у школы</p>
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <div class="p-3 rounded-3" style="background: rgba(239, 68, 68, 0.1);">
-                                    <i class="bi bi-clock fs-1 text-danger mb-3"></i>
+                                <div class="p-3 rounded-3" style="background: rgba(59, 130, 246, 0.1);">
+                                    <i class="bi bi-clock fs-1 text-primary mb-3"></i>
                                     <h6>График</h6>
                                     <p class="small mb-0">ПН-СБ: 08:00-20:00</p>
                                 </div>
@@ -174,7 +174,7 @@ $general_error = getError();
                     <div class="card-body position-relative">
                         <div class="d-flex align-items-center mb-3">
                             <div class="flex-shrink-0">
-                                <i class="bi bi-building contact-icon-large text-success"></i>
+                                <i class="bi bi-building-fill contact-icon-large text-success"></i>
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h6 class="fw-bold">Школьное здание</h6>

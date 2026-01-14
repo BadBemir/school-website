@@ -55,7 +55,7 @@ $general_error = getError();
           <div class="col-md-3 col-6 mb-4">
             <div class="card text-center border-warning shadow-sm h-100">
               <div class="card-body">
-                <div class="display-4 fw-bold text-warning mb-2">25</div>
+                <div class="display-4 fw-bold text-warning mb-2">15</div>
                 <p class="card-text text-muted">Средний стаж работы (лет)</p>
               </div>
             </div>
@@ -84,7 +84,7 @@ $general_error = getError();
                     <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
                       <i class="bi bi-person-fill text-white" style="font-size: 3rem;"></i>
                     </div>
-                    <h5 class="card-title fw-bold">Иванова Анна Петровна</h5>
+                    <h5 class="card-title fw-bold">Подкопаева Ольга Викторовна</h5>
                     <p class="text-primary mb-2">Директор школы</p>
                     <div class="mb-3">
                     </div>
@@ -132,7 +132,7 @@ $general_error = getError();
           <div class="card-body p-4">
             <!-- Фильтры -->
             <div class="row mb-4">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-outline-primary active">Все</button>
                   <button type="button" class="btn btn-outline-primary">Начальная школа</button>
@@ -141,9 +141,7 @@ $general_error = getError();
                   <button type="button" class="btn btn-outline-primary">Иностранные языки</button>
                 </div>
               </div>
-              <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Поиск по ФИО или предмету...">
-              </div>
+
             </div>
 
             <!-- Таблица учителей -->
@@ -234,9 +232,9 @@ $general_error = getError();
           <div class="card-body p-4">
             <div class="row g-4">
               <div class="col-md-4">
-                <div class="card h-100 border-success">
-                  <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="bi bi-journal-text me-2"></i>МО начальных классов</h5>
+                <div class="card h-100 border-primary">
+                  <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-journal-text me-2"></i>Начальных классов</h5>
                   </div>
                   <div class="card-body">
                     <p class="card-text">15 педагогов</p>
@@ -253,7 +251,7 @@ $general_error = getError();
               <div class="col-md-4">
                 <div class="card h-100 border-primary">
                   <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-book me-2"></i>МО гуманитарного цикла</h5>
+                    <h5 class="mb-0"><i class="bi bi-book me-2"></i>Гуманитарного цикла</h5>
                   </div>
                   <div class="card-body">
                     <p class="card-text">12 педагогов</p>
@@ -268,9 +266,9 @@ $general_error = getError();
               </div>
               
               <div class="col-md-4">
-                <div class="card h-100 border-warning">
-                  <div class="card-header bg-warning text-white">
-                    <h5 class="mb-0"><i class="bi bi-calculator me-2"></i>МО естественных наук</h5>
+                <div class="card h-100 border-primary">
+                  <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-calculator me-2"></i>Естественных наук</h5>
                   </div>
                   <div class="card-body">
                     <p class="card-text">10 педагогов</p>

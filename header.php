@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="team.php">Руководство</a>
+            <a class="nav-link" href="team.php">Педагоги</a>
           </li>
 
         </ul>
