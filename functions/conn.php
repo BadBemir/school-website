@@ -3,7 +3,7 @@
 $servername = "localhost";
 $dbusername = "root";
 $dbpassword = "";
-$dbname = "site";
+$dbname = "school";
 
 try {
     // Создание подключения с обработкой ошибок

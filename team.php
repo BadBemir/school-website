@@ -34,42 +34,6 @@ $general_error = getError();
       </section>
       
       <div class="container my-5">
-        <!-- Статистика -->
-        <div class="row mb-5">
-          <div class="col-md-3 col-6 mb-4">
-            <div class="card text-center border-primary shadow-sm h-100">
-              <div class="card-body">
-                <div class="display-4 fw-bold text-primary mb-2">58</div>
-                <p class="card-text text-muted">Педагогических работников</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <div class="card text-center border-success shadow-sm h-100">
-              <div class="card-body">
-                <div class="display-4 fw-bold text-success mb-2">86%</div>
-                <p class="card-text text-muted">С высшей и первой категорией</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <div class="card text-center border-warning shadow-sm h-100">
-              <div class="card-body">
-                <div class="display-4 fw-bold text-warning mb-2">15</div>
-                <p class="card-text text-muted">Средний стаж работы (лет)</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-4">
-            <div class="card text-center border-info shadow-sm h-100">
-              <div class="card-body">
-                <div class="display-4 fw-bold text-info mb-2">95%</div>
-                <p class="card-text text-muted">С высшим образованием</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Руководство школы -->
         <div class="card mb-5 shadow-lg">
           <div class="card-header bg-primary text-white">
@@ -151,7 +115,6 @@ $general_error = getError();
                   <tr>
                     <th>ФИО</th>
                     <th>Должность / Предмет</th>
-                    <th>Категория</th>
                     <th>Стаж</th>
                     <th>Награды</th>
                   </tr>
@@ -160,67 +123,50 @@ $general_error = getError();
                   <tr>
                     <td><strong>Ковалева Мария Ивановна</strong></td>
                     <td>Учитель русского языка и литературы</td>
-                    <td><span class="badge bg-danger">Высшая</span></td>
                     <td>32 года</td>
                     <td><span class="badge bg-warning">Почетный работник</span></td>
                   </tr>
                   <tr>
                     <td><strong>Петровский Александр Сергеевич</strong></td>
                     <td>Учитель истории и обществознания</td>
-                    <td><span class="badge bg-danger">Высшая</span></td>
                     <td>28 лет</td>
                     <td><span class="badge bg-info">Руководитель музея</span></td>
                   </tr>
                   <tr>
                     <td><strong>Сидорова Татьяна Владимировна</strong></td>
                     <td>Учитель математики</td>
-                    <td><span class="badge bg-danger">Высшая</span></td>
                     <td>25 лет</td>
                     <td><span class="badge bg-success">Учитель года-2020</span></td>
                   </tr>
                   <tr>
                     <td><strong>Козлов Дмитрий Анатольевич</strong></td>
                     <td>Учитель физики</td>
-                    <td><span class="badge bg-primary">Первая</span></td>
                     <td>18 лет</td>
                     <td><span class="badge bg-secondary">Наставник</span></td>
                   </tr>
                   <tr>
                     <td><strong>Николаева Елена Петровна</strong></td>
                     <td>Учитель английского языка</td>
-                    <td><span class="badge bg-danger">Высшая</span></td>
                     <td>30 лет</td>
                     <td><span class="badge bg-warning">Почетный работник</span></td>
                   </tr>
                   <tr>
                     <td><strong>Федоров Сергей Михайлович</strong></td>
                     <td>Учитель информатики</td>
-                    <td><span class="badge bg-primary">Первая</span></td>
                     <td>12 лет</td>
                     <td><span class="badge bg-info">IT-координатор</span></td>
                   </tr>
                   <tr>
                     <td><strong>Васильева Ольга Николаевна</strong></td>
                     <td>Учитель начальных классов</td>
-                    <td><span class="badge bg-danger">Высшая</span></td>
                     <td>40 лет</td>
                     <td><span class="badge bg-success">Заслуженный учитель</span></td>
                   </tr>
                 </tbody>
               </table>
             </div>
-
-            <!-- Легенда -->
-            <div class="mt-4">
-              <h6 class="mb-3"><i class="bi bi-info-circle me-1"></i>Легенда квалификационных категорий:</h6>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-danger">Высшая квалификационная категория</span>
-                <span class="badge bg-primary">Первая квалификационная категория</span>
-                <span class="badge bg-secondary">Соответствие должности</span>
-                <span class="badge bg-success">Заслуженный учитель РФ</span>
-                <span class="badge bg-warning">Почетный работник общего образования</span>
-              </div>
-            </div>
+  
+            
           </div>
         </div>
 

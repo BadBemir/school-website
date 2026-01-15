@@ -28,21 +28,18 @@ $general_error = getError();
           <div class="text-center hero-content ">
             <h1 class="display-4 fw-bold mb-3">О школе</h1>
             <p class="lead" style="font-size: 1.25rem; opacity: 0.95;">Основная информация</p>
-            <div class="border-bottom border-white mx-auto" style="width: 100px; height: 4px; border-radius: 2px; opacity: 0.8;"></div>
+            <div class=" mx-auto" style="width: 100px; height: 4px; border-radius: 2px; opacity: 0.8;"></div>
           </div>
         </div>
       </section>
-      
-      <div class="container my-5">
+        <div class="container my-5">
         <div class="row align-items-center">
           <div class="col-md-12">
-            <div class="card shadow-lg mb-5">
-              <div class="card-header bg-primary text-white">
-              <h3 class="mb-0" id="history" style="scroll-margin-top: 20px;">История школы</h3>
-              </div>
+            <div class="card mb-5 border-0">
               <div class="card-body p-4">
-                <p class="fs-5 mb-4">Средняя школа № 12 создана в 1989 году решением исполнительного Комитета Городского Совета Народных Депутатов от 29 августа 1989 года № 552. С 10.01.2012г. постановлением администрации Находкинского городского округа от 19.12.2011г. № 2287 внесено изменение в наименование школы: Муниципальное бюджетное общеобразовательное учреждение «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа Постановлением администрации Находкинского городского округа № 409 от 16.04.2021 г. создано Муниципальное автономное общеобразовательное учреждение «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа путем изменения типа существующего Муниципального бюджетного общеобразовательного учреждения «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа.</p>
-                <h4 class="mt-4 mb-3">Внесены и зарегистрированы изменения в наименование Школы:</h4>
+                <h4 class="mb-3">История школы</h4>
+                <p class="fs-5">Средняя школа № 12 создана в 1989 году решением исполнительного Комитета Городского Совета Народных Депутатов от 29 августа 1989 года № 552. С 10.01.2012г. постановлением администрации Находкинского городского округа от 19.12.2011г. № 2287 внесено изменение в наименование школы: Муниципальное бюджетное общеобразовательное учреждение «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа Постановлением администрации Находкинского городского округа № 409 от 16.04.2021 г. создано Муниципальное автономное общеобразовательное учреждение «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа путем изменения типа существующего Муниципального бюджетного общеобразовательного учреждения «Средняя общеобразовательная школа № 12 имени В.Н. Сметанкина» Находкинского городского округа.</p>
+                <h4 class="mt-4 mb-3">Внесеные и зарегистрированые изменения в наименовании школы</h4>
                 <ul class="fs-5 list-group list-group-flush">
                     <li class="list-group-item border-0 px-0 py-2"><i class="bi bi-calendar-check me-2 text-primary"></i>22.02.1993г. – Средняя общеобразовательная школа № 12, постановлением главы администрации от 22.02.1993г. № 1903.</li>
                     <li class="list-group-item border-0 px-0 py-2"><i class="bi bi-calendar-check me-2 text-primary"></i>02.12.1996г. – Муниципальное образовательное учреждение средняя школа № 12 имени Сметанкина В.Н., постановлением главы администрации от 25.08.1996 г. № 1224.</li>
@@ -56,11 +53,14 @@ $general_error = getError();
         </div>
       </div>
       
+      
+ 
+      
 <div class="container my-5">
   <!-- Первая таблица: Об образовательной организации -->
   <div class="card mb-4 shadow-sm">
     <div class="card-header bg-primary text-white">
-      <h3 class="mb-0" id="maininfo" style="scroll-margin-top: 20px;">Основные сведенья</h3>
+      <h3 class="mb-0" id="maininfo" style="scroll-margin-top: 20px;">Основные сведения</h3>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -108,24 +108,6 @@ $general_error = getError();
             <tr>
               <td class="fw-bold">Телефоны</td>
               <td>8 (4236) 69-21-21<br><small class="text-muted">8 (4236) 64-19-38</small></td>
-            </tr>
-            <tr>
-              <td class="fw-bold">Сайт</td>
-              <td>
-                <a href="https://www.nakhodka-city.ru/" target="_blank" class="text-decoration-none">
-                  https://www.nakhodka-city.ru/
-                  <i class="bi bi-box-arrow-up-right ms-1"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td class="fw-bold">E-Mail</td>
-              <td>
-                <a href="mailto:admcity@nakhodka-city.ru" class="text-decoration-none">
-                  admcity@nakhodka-city.ru
-                  <i class="bi bi-envelope ms-1"></i>
-                </a>
-              </td>
             </tr>
           </tbody>
         </table>
