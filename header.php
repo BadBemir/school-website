@@ -174,10 +174,6 @@
             <label for="registerPassword" class="form-label">Пароль</label>
             <input name="reg-password" type="password" class="form-control" id="registerPassword" placeholder="Не менее 6 символов" required>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
-            <label class="form-check-label" for="acceptTerms">Я согласен с условиями использования</label>
-          </div>
           <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
         </form>
       </div>
