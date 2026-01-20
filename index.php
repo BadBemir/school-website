@@ -50,17 +50,17 @@ $general_error = getError();
               <p class="mb-4" style="opacity: 0.9;">Здесь Вы сможете найти актуальную информацию об учреждении.</p>
               <div class="d-flex gap-3 flex-wrap">
                 <a href="about.php" class="btn btn-primary btn-lg">Узнать больше</a>
-                <a href="contact.php" class="btn btn-outline-dark btn-lg">Связаться с нами</a>
+                <a href="contact.php" class="btn btn-outline-primary btn-lg">Связаться с нами</a>
               </div>
             </div>
             <div class="col-lg-6 mt-lg-0">
-              <img src="images\school-front.jpeg" class="img-fluid rounded-4 shadow" alt="Школа №12" loading="lazy">
+              <img src="images\school-front.jpeg" class="img-fluid rounded-4 shadow m-5" alt="Школа №12" loading="lazy">
             </div>
           </div>
         </div>
       </section>
 
-      <section class="mb-5 bg-light">
+      <section class="mb-5">
         <div class="container">
           <div class="row text-center">
             <div class="col-lg-10 mx-auto">
@@ -79,7 +79,7 @@ $general_error = getError();
                   <div class="card  h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <i class="bi bi-mortarboard-fill display-4 text-primary mb-3"></i>
-                      <h4>58 педагогов</h4>
+                      <h4 class="text-primary">58 педагогов</h4>
                       <p class="text-muted">Большинство — высшая и первая категория</p>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ $general_error = getError();
                   <div class="card h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <i class="bi bi-calendar-event-fill display-4 text-primary mb-3"></i>
-                      <h4>Активная жизнь</h4>
+                      <h4 class="text-primary">Активная жизнь</h4>
                       <p class="text-muted">Более 40 мероприятий в год</p>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ $general_error = getError();
 
 
 
-      <section class="hero-section py-5 bg-light">
+      <section class="hero-section py-5 bg">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10">

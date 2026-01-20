@@ -7,7 +7,7 @@ $general_error = getError();
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@ $general_error = getError();
       <section class="hero-section mt-4" style="padding: 3rem 0;">
         <div class="container">
           <div class="text-center hero-content ">
-            <h1 class="display-4 fw-bold mb-3">О школе</h1>
+            <h1 class="display-4 fw-bold mb-0">О школе</h1>
             <p class="lead" style="font-size: 1.25rem; opacity: 0.95;">Основная информация</p>
             <div class=" mx-auto" style="width: 100px; height: 4px; border-radius: 2px; opacity: 0.8;"></div>
           </div>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +48,11 @@
         
 
         <div class="d-flex align-items-center">
+          <!-- Кнопка смены темы -->
+          <button id="theme-toggle" class="btn btn-light me-2">
+            <i class="bi bi-moon"></i>
+          </button>
+
           <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
             <div class="dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -219,8 +222,30 @@
   document.getElementById('registerModal').addEventListener('hidden.bs.modal', function () {
     clearRegError();
   });
-  
- 
+
+  // Логика смены темы
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Проверяем сохраненную тему в localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-theme');
+      themeToggle.innerHTML = '<i class="bi bi-sun"></i>';
+    } else {
+      themeToggle.innerHTML = '<i class="bi bi-moon"></i>';
+    }
+
+    // Обработчик клика по кнопке
+    themeToggle.addEventListener('click', function() {
+      body.classList.toggle('dark-theme');
+      if (body.classList.contains('dark-theme')) {
+        themeToggle.innerHTML = '<i class="bi bi-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeToggle.innerHTML = '<i class="bi bi-moon"></i>';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
 </script>
-</body>
-</html>
