@@ -23,7 +23,7 @@ $general_error = getError();
     
     <main>
       <!-- Hero Section -->
-      <section class="hero-section mt-4" style="padding: 3rem 0;">
+      <section class="hero-section" style="padding: 3rem 0;">
         <div class="container">
           <div class="text-center hero-content">
             <h1 class="display-4 fw-bold mb-3">Руководство и педагогический состав</h1>
@@ -95,16 +95,7 @@ $general_error = getError();
           </div>
           <div class="card-body p-4">
             <!-- Фильтры -->
-            <div class="row mb-4">
-              <div class="col-md-12">
-                <div class="btn-group" role="group">
-                  <button type="button" class="btn btn-outline-primary active">Все</button>
-                  <button type="button" class="btn btn-outline-primary">Начальная школа</button>
-                  <button type="button" class="btn btn-outline-primary">Гуманитарные науки</button>
-                  <button type="button" class="btn btn-outline-primary">Естественные науки</button>
-                  <button type="button" class="btn btn-outline-primary">Иностранные языки</button>
-                </div>
-              </div>
+            
 
             </div>
 

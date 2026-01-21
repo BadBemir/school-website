@@ -3,7 +3,7 @@
    ========================================= */
 :root {
   --school-blue: #1e3a8a;
-  --school-light-blue: #3b82f6;
+  --school-light-blue: rgb(13,110,253);
   --school-green: #10b981;
   --school-orange: #f97316;
   --school-yellow: #fbbf24;
@@ -51,11 +51,19 @@ body.dark-theme {
   --bg-body: #111827; /* Очень темный синий/серый */
   --text-main: #f3f4f6; /* Почти белый */
   --text-muted: #9ca3af; /* Светло-серый */
-  --bg-card: #1f2937; /* Темно-серый для карточек */
+  --bg-card: #111827; /* Темно-серый для карточек */
   --border-color: #374151; /* Цвет границ */
   --input-bg: #374151;
   --input-border: #4b5563;
   --input-text: #f3f4f6;
+}
+
+body.dark-theme .navbar{
+  background-color: var(--bg-body);
+}
+
+body.dark-theme footer {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(16, 185, 129, 0.05));
 }
 
 /* Применение переменных в темной теме */
@@ -83,12 +91,12 @@ body.dark-theme a:not(.btn):not(.nav-link):hover {
 
 /* Кнопки в навбаре */
 body.dark-theme .btn-light {
-  background-color: #374151;
+  background-color: var(--bg-body);
   color: #f3f4f6;
   border: 1px solid #4b5563;
 }
 body.dark-theme .btn-light:hover {
-  background-color: #4b5563;
+  background-color:  var(--bg-body);
   color: white;
 }
 
@@ -151,7 +159,7 @@ body.dark-theme .list-group-item {
 }
 
 /* =========================================
-   3. ТАБЛИЦЫ В ТЕМНОЙ ТЕМЕ (ВАЖНОЕ ИЗМЕНЕНИЕ)
+  3. ТАБЛИЦЫ В ТЕМНОЙ ТЕМЕ
    ========================================= */
 body.dark-theme .table {
   --bs-table-color: var(--text-main);
@@ -182,14 +190,37 @@ body.dark-theme .table-hover > tbody > tr:hover > * {
 }
 
 /* =========================================
-   4. ПРОЧИЕ СТИЛИ
+  4. ПРОЧИЕ СТИЛИ
    ========================================= */
+
+.navbar{
+  background-color: var(--school-light-blue);
+}
+
+footer {
+    background-color: var(--school-light-blue);
+}
+
+footer {
+    background-color: var(--school-light-blue);
+    a,i{
+      color: var(--school-light);
+    }
+    p {
+      color: var(--school-light);
+    }
+}
+
+.navbar-toggler {
+  margin-right: 15px ;
+}
+
+
 .navbar-brand i {
   color: var(--school-yellow);
 }
 .hero-section {
   background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(16, 185, 129, 0.05));
-  border-radius: var(--border-radius);
 }
 .contact-icon-large {
   font-size: 2rem;

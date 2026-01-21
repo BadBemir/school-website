@@ -309,6 +309,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         </div>
     </main>
 
+    <?php require_once "footer.php"?>  
+
     <?php if (!(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true && $_SESSION['user_id'] == 0)): ?>
     <div class="modal fade" id="editProfileModal" tabindex="-1">
         <div class="modal-dialog">
@@ -323,27 +325,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <div class="mb-3">
                             <label for="editName" class="form-label">ФИО</label>
                             <input type="text" name="username" class="form-control" id="editName" 
-                                   value="<?php echo htmlspecialchars($user['username']); ?>" 
-                                   minlength="<?php echo MIN_USERNAME_LENGTH; ?>" required>
+                                value="<?php echo htmlspecialchars($user['username']); ?>" 
+                                minlength="<?php echo MIN_USERNAME_LENGTH; ?>" required>
                             <div class="form-text">Минимум <?php echo MIN_USERNAME_LENGTH; ?> символа</div>
                         </div>
                         <div class="mb-3">
                             <label for="editEmail" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" id="editEmail" 
-                                   value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                                value="<?php echo htmlspecialchars($user['email']); ?>" required>
                         </div>
                         <div class="mb-3">
                             <label for="editLogin" class="form-label">Логин</label>
                             <input type="text" name="login" class="form-control" id="editLogin" 
-                                   value="<?php echo htmlspecialchars($user['login']); ?>" 
-                                   minlength="<?php echo MIN_LOGIN_LENGTH; ?>" required>
+                                value="<?php echo htmlspecialchars($user['login']); ?>" 
+                                minlength="<?php echo MIN_LOGIN_LENGTH; ?>" required>
                             <div class="form-text">Минимум <?php echo MIN_LOGIN_LENGTH; ?> символа</div>
                         </div>
                         <div class="mb-3">
                             <label for="editJob" class="form-label">Должность</label>
                             <input type="text" name="job" class="form-control" id="editJob" 
-                                   value="<?php echo htmlspecialchars($user['job'] === 'Не указано' ? '' : $user['job']); ?>"
-                                   placeholder="Например: Ученик, Учитель, Родитель">
+                                value="<?php echo htmlspecialchars($user['job'] === 'Не указано' ? '' : $user['job']); ?>"
+                                placeholder="Например: Ученик, Учитель, Родитель">
                             <div class="form-text">Укажите вашу должность или роль в школе</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Сохранить изменения</button>
@@ -370,7 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <div class="mb-3">
                             <label for="newPassword" class="form-label">Новый пароль</label>
                             <input type="password" name="new_password" class="form-control" id="newPassword" 
-                                   minlength="<?php echo MIN_PASSWORD_LENGTH; ?>" required>
+                                minlength="<?php echo MIN_PASSWORD_LENGTH; ?>" required>
                             <div class="form-text">Минимум <?php echo MIN_PASSWORD_LENGTH; ?> символа</div>
                         </div>
                         <div class="mb-3">

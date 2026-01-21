@@ -9,11 +9,11 @@
 </head>
 <body>
      <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark pr-4">
     <div class="container-fluid">
-      <a class="navbar-brand fs-4 fw-bold" href="/">
-        <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
-      </a>
+<h2 class='navbar-brand fs-4 fw-bold'><i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО</h2>
+        
+
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="about.php" id="aboutDropdown" 
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
               О школе
             </a>
             <ul class="dropdown-menu" aria-labelledby="aboutDropdown">

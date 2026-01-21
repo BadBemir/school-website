@@ -158,8 +158,8 @@ ensureStatusColumn($conn);
                             <div class="mb-3">
                               <label for="job<?php echo $user['id']; ?>" class="form-label">Должность пользователя: <strong><?php echo htmlspecialchars($user['username']); ?></strong></label>
                               <input type="text" class="form-control" id="job<?php echo $user['id']; ?>" name="job"
-                                     value="<?php echo htmlspecialchars($user['job'] ?? ''); ?>"
-                                     placeholder="Введите должность">
+                                value="<?php echo htmlspecialchars($user['job'] ?? ''); ?>"
+                                placeholder="Введите должность">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -278,6 +278,8 @@ ensureStatusColumn($conn);
         </div>
       </div>
     </main>
+
+        <?php require_once "footer.php"?>  
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

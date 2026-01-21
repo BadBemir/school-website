@@ -23,7 +23,7 @@ $general_error = getError();
     
     <main>
       <!-- Hero Section -->
-      <section class="hero-section mt-4" style="padding: 3rem 0;">
+      <section class="hero-section" style="padding: 3rem 0;">
         <div class="container">
           <div class="text-center hero-content ">
             <h1 class="display-4 fw-bold mb-0">О школе</h1>
