@@ -93,12 +93,6 @@ $general_error = getError();
           <div class="card-header bg-primary text-white">
             <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>Педагогический состав</h3>
           </div>
-          <div class="card-body p-4">
-            <!-- Фильтры -->
-            
-
-            </div>
-
             <!-- Таблица учителей -->
             <div class="table-responsive">
               <table class="table table-hover">
@@ -159,14 +153,19 @@ $general_error = getError();
   
             
           </div>
+
         </div>
 
-        <!-- Методические объединения -->
-        <div class="card shadow-lg">
+
+        <div class="container my-5">
+        <!-- Руководство школы -->
+        <div class="card mb-5 shadow-lg">
           <div class="card-header bg-primary text-white">
-            <h3 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>Методические объединения</h3>
+            <h3 class="mb-0"><i class="bi bi-person-badge me-2"></i>Руководство школы</h3>
           </div>
           <div class="card-body p-4">
+            <div class="row g-4">
+              <div class="card-body p-4">
             <div class="row g-4">
               <div class="col-md-4">
                 <div class="card h-100 border-primary">
@@ -218,48 +217,20 @@ $general_error = getError();
                   </div>
                 </div>
               </div>
+
+            </div>
+          </div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </main>
 
     <?php require_once "footer.php"?>   
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-      // Простой поиск по таблице
-      document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.querySelector('input[type="text"]');
-        const tableRows = document.querySelectorAll('table tbody tr');
-        
-        if (searchInput) {
-          searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            tableRows.forEach(row => {
-              const text = row.textContent.toLowerCase();
-              if (text.includes(searchTerm)) {
-                row.style.display = '';
-              } else {
-                row.style.display = 'none';
-              }
-            });
-          });
-        }
-        
-        // Переключение фильтров
-        const filterButtons = document.querySelectorAll('.btn-group .btn');
-        filterButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filter = this.textContent;
-            // Здесь можно добавить логику фильтрации
-          });
-        });
-      });
-    </script>
+ 
   </body>
 </html>

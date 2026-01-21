@@ -15,17 +15,17 @@
                 <h5 class="mb-3">Быстрые ссылки</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="/" class="text-decoration-none">
+                        <a href="/" class="text-decoration-none text-light">
                             <i class="bi bi-house me-2"></i>Главная
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="about.php" class="text-decoration-none">
+                        <a href="about.php" class="text-decoration-none text-light">
                             <i class="bi bi-info-circle me-2"></i>О школе
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="contact.php" class="text-decoration-none">
+                        <a href="contact.php" class="text-decoration-none text-light">
                         <i class="bi bi-phone me-2"></i>Контакты
                         </a>
                     </li>
