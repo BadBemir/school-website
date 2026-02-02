@@ -44,9 +44,7 @@ main {
   flex: 1;
 }
 
-/* =========================================
-   2. ТЕМНАЯ ТЕМА (DARK MODE)
-   ========================================= */
+
 body.dark-theme {
   --bg-body: #111827; /* Очень темный синий/серый */
   --text-main: #f3f4f6; /* Почти белый */
@@ -78,18 +76,17 @@ body.dark-theme .text-muted {
 }
 
 body.dark-theme .text-dark {
-  color: #f3f4f6 !important; /* Принудительно делаем темный текст светлым */
+  color: #f3f4f6 !important; 
 }
 
-/* Ссылки в темной теме */
 body.dark-theme a:not(.btn):not(.nav-link) {
-  color: #60a5fa; /* Светло-синий */
+  color: #60a5fa;
 }
 body.dark-theme a:not(.btn):not(.nav-link):hover {
   color: #93c5fd;
 }
 
-/* Кнопки в навбаре */
+
 body.dark-theme .btn-light {
   background-color: var(--bg-body);
   color: #f3f4f6;
@@ -100,12 +97,12 @@ body.dark-theme .btn-light:hover {
   color: white;
 }
 
-/* Hero Section градиент для темной темы */
+
 body.dark-theme .hero-section {
   background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(16, 185, 129, 0.1));
 }
 
-/* Модальные окна */
+
 body.dark-theme .modal-content {
   background-color: var(--bg-card);
   color: var(--text-main);
@@ -119,7 +116,7 @@ body.dark-theme .btn-close {
   filter: invert(1) brightness(2); /* Инвертируем крестик закрытия */
 }
 
-/* Поля ввода (Input) и Select */
+
 body.dark-theme .form-control, 
 body.dark-theme .form-select {
   background-color: var(--input-bg);
@@ -133,7 +130,7 @@ body.dark-theme .form-select:focus {
   border-color: #60a5fa;
   box-shadow: 0 0 0 0.25rem rgba(96, 165, 250, 0.25);
 }
-/* Плейсхолдеры в инпутах */
+
 body.dark-theme .form-control::placeholder {
     color: #9ca3af;
 }
@@ -158,9 +155,7 @@ body.dark-theme .list-group-item {
   color: var(--text-main);
 }
 
-/* =========================================
-  3. ТАБЛИЦЫ В ТЕМНОЙ ТЕМЕ
-   ========================================= */
+
 body.dark-theme .table {
   --bs-table-color: var(--text-main);
   --bs-table-bg: transparent;
@@ -176,22 +171,20 @@ body.dark-theme .table {
   border-color: var(--border-color);
 }
 
-/* Убираем принудительный белый фон ячеек, который ставит Bootstrap */
+Ы
 body.dark-theme .table > :not(caption) > * > * {
     background-color: transparent; 
     color: var(--text-main);
-    box-shadow: inset 0 0 0 9999px transparent; /* сброс теней бутстрапа */
+    box-shadow: inset 0 0 0 9999px transparent; 
 }
 
-/* Ховер эффект для строк */
+
 body.dark-theme .table-hover > tbody > tr:hover > * {
     background-color: var(--bs-table-hover-bg);
     color: var(--text-main);
 }
 
-/* =========================================
-  4. ПРОЧИЕ СТИЛИ
-   ========================================= */
+
 
 .navbar{
   background-color: var(--school-light-blue);

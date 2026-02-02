@@ -9,101 +9,110 @@
 </head>
 <body>
      <header>
-  <nav class="navbar navbar-expand-lg navbar-dark pr-4">
-    <div class="container-fluid">
-<h2 class='navbar-brand fs-4 fw-bold'><i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО</h2>
-        
-
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <ul class="navbar-nav fs-5">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Главная</a>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="about.php" id="aboutDropdown" 
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              О школе
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-4 fw-bold" href="/">
+                <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
             </a>
-            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-              <li><a class="dropdown-item" href="about.php#history">История школы</a></li>
-              <li><a class="dropdown-item" href="about.php#maininfo">Основные сведенья</a></li>
-            </ul>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="contact.php">Контакты</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="team.php">Педагоги</a>
-          </li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        </ul>
-        
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Главная</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="about.php" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            О школе
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.php#history">История школы</a></li>
+                            <li><a class="dropdown-item" href="about.php#maininfo">Основные сведения</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Контакты</a>
+                    </li>
 
-        <div class="d-flex align-items-center">
-          <!-- Кнопка смены темы -->
-          <button id="theme-toggle" class="btn btn-light me-2">
-            <i class="bi bi-moon"></i>
-          </button>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.php">Педагоги</a>
+                    </li>
 
-          <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a class="dropdown-item" href="account.php">
-                    <i class="bi bi-person-badge"></i> Личный кабинет
-                  </a>
-                </li>
-                
-                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
-                <li>
-                  <a class="dropdown-item" href="admin.php">
-                    <i class="bi bi-shield-check"></i> Панель администратора
-                  </a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-                <?php endif; ?>
-                
-                <li>
-                  <a class="dropdown-item" href="logout.php">
-                    <i class="bi bi-box-arrow-right"></i> Выйти
-                  </a>
-                </li>
-              </ul>
+                    <!-- Сюда можно добавить ещё пункты меню при необходимости -->
+                </ul>
+
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Кнопка смены темы -->
+                    <button id="theme-toggle" class="btn btn-light me-2" title="Сменить тему">
+                        <i class="bi bi-moon"></i>
+                    </button>
+
+                    <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
+
+                        <!-- Кнопки для авторизованных пользователей -->
+                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                            <!-- Администратор -->
+                            <a href="admin_schedule.php" class="btn btn-outline-warning me-2" title="Управление расписанием">
+                                <i class="bi bi-calendar-event me-1"></i> Расписание (админ)
+                            </a>
+                            <a href="admin.php" class="btn btn-outline-danger me-2" title="Панель администратора">
+                                <i class="bi bi-shield-lock me-1"></i> Админ-панель
+                            </a>
+                        <?php else: ?>
+                            <!-- Обычный пользователь -->
+                            <a href="schedule.php" class="btn btn-outline-warning me-2" title="Посмотреть расписание уроков">
+                                <i class="bi bi-calendar-check me-1"></i> Расписание
+                            </a>
+                        <?php endif; ?>
+
+                        <!-- Выпадающее меню с именем пользователя -->
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i>
+                                <?= htmlspecialchars($_SESSION['username'] ?? 'Пользователь') ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="account.php">
+                                        <i class="bi bi-person-badge me-1"></i> Личный кабинет
+                                    </a>
+                                </li>
+                                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                                    <li>
+                                        <a class="dropdown-item" href="admin.php">
+                                            <i class="bi bi-gear me-1"></i> Админ-панель
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="logout.php">
+                                        <i class="bi bi-box-arrow-right me-1"></i> Выйти
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    <?php else: ?>
+
+                        <!-- Не авторизован -->
+                        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Войти
+                        </button>
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="bi bi-person-plus me-1"></i> Регистрация
+                        </button>
+
+                    <?php endif; ?>
+                </div>
             </div>
-          <?php else: ?>
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                <i class="bi bi-person-circle"></i> Войти
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="bi bi-box-arrow-in-right"></i> Вход
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
-                    <i class="bi bi-person-plus"></i> Регистрация
-                  </button>
-                </li>
-              </ul>
-            </div>
-          <?php endif; ?>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>
     
 <div class="modal fade" id="loginModal" tabindex="-1">
