@@ -6,11 +6,15 @@ require_once "functions/conn.php";
 $general_success = getSuccess();
 $general_error = getError();
 
+$latest_news = [];
 try {
-    $stmt = $conn->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 3");
-    $latest_news = $stmt->fetchAll();
-} catch (PDOException $e) { $latest_news = []; }
+    if (isset($conn)) {
+        $stmt = $conn->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 3");
+        $latest_news = $stmt->fetchAll();
+    }
+} catch (PDOException $e) {
 
+}
 ?>
 
 <!doctype html>
@@ -147,34 +151,38 @@ try {
 
           
       <section class="py-5">
+        <div class="album py-5 bg-light text-dark">
         <div class="container">
-        <div class="container">
-          <div class="d-flex justify-content-between"><h2>Последние новости</h2>
-          <a href="/news.php" class="btn align-middle btn-outline-primary">Читать далее</a></div>
-          
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
-            <?php foreach ($latest_news as $news): ?>
-            <div class="col">
-              <div class="card h-100 shadow-sm border-solid hero-section">
-                <?php if ($news['image']): ?>
-                    <img src="<?= $news['image'] ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
-                <?php endif; ?>
-                <div class="card-body">
-                  <h5 class="card-title fw-bold"><?= htmlspecialchars($news['title']) ?></h5>
-                  <p class="card-text text-muted">
-                      <?= mb_strimwidth(htmlspecialchars($news['content']), 0, 150, "...") ?>
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted"><?= date('d.m.Y', strtotime($news['created_at'])) ?></small>
+          <div class="d-flex justify-content-between mb-4">
+          <h2>Последние новости</h2>
+          <a href="/news.php" class="btn btn-sm btn-outline-primary ms-2 text-nowrap">Подробнее</a>
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <?php if (!empty($latest_news)): ?>
+              <?php foreach ($latest_news as $news): ?>
+              <div class="col">
+                <div class="card h-100 shadow-sm border-solid hero-section">
+                  <?php if ($news['image']): ?>
+                      <img src="<?= htmlspecialchars($news['image']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+                  <?php endif; ?>
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <h5 class="card-title fw-bold mb-0"><?= htmlspecialchars($news['title']) ?></h5>
+                    </div>
+                    <small class="text-muted d-block mb-2"><?= date('d.m.Y', strtotime($news['created_at'])) ?></small>
+                    <p class="card-text text-muted">
+                        <?= mb_strimwidth(strip_tags($news['content']), 0, 120, "...") ?>
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-            <?php endforeach; ?>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <p class="text-center w-100">Новостей пока нет.</p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
-        </div>
       </section>
 
 
