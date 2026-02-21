@@ -29,6 +29,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: "Segoe UI", "Roboto", sans-serif;
   color: var(--text-main);
@@ -171,7 +172,6 @@ body.dark-theme .table {
   border-color: var(--border-color);
 }
 
-Ы
 body.dark-theme .table > :not(caption) > * > * {
     background-color: transparent; 
     color: var(--text-main);
@@ -240,3 +240,4 @@ footer {
     background-color: #ef4444;
     color: white;
 }
+  

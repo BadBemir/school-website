@@ -28,7 +28,7 @@ $general_error = getError();
           <div class="text-center hero-content">
             <h1 class="display-4 fw-bold mb-3">Руководство и педагогический состав</h1>
             <p class="lead" style="font-size: 1.25rem; opacity: 0.95;">Высококвалифицированные специалисты с большим опытом работы</p>
-            <div class="border-bottom border-white mx-auto" style="width: 100px; height: 4px; border-radius: 2px; opacity: 0.8;"></div>
+
           </div>
         </div>
       </section>

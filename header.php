@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/main.css">
+
 </head>
 <body>
      <header>
@@ -20,30 +21,43 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto fs-5">
+                <ul class="navbar-nav me-auto fs-6">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Главная</a>
+                        <a class="nav-link" href="/">ГЛАВНАЯ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.php">НОВОСТИ</a>
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="about.php" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            О школе
+                        <a class="nav-link dropdown-toggle " href="about.php" id="aboutDropdown" role="button" data-bs-toggle="dropdown"  aria-expanded="false" data-bs-popper="static">
+                            О ШКОЛЕ
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                        <ul class="dropdown-menu"  aria-labelledby="aboutDropdown">
                             <li><a class="dropdown-item" href="about.php#history">История школы</a></li>
                             <li><a class="dropdown-item" href="about.php#maininfo">Основные сведения</a></li>
+                            <li><a class="dropdown-item" href="about.php#maininfo">Структура и органы управления</a></li>
+                            <li><a class="dropdown-item" href="about.php#maininfo">Документы</a></li>
+                            <li><a class="dropdown-item" href="about.php#maininfo">Образовательные стандарты</a></li>
+                            <li><a class="dropdown-item" href="team.php">Руководство и педагогический состав</a></li>
+                            <li><a class="dropdown-item" href="team.php">Меры поддержки обучающихся</a></li>
+                            <li><a class="dropdown-item" href="team.php">Организация питания</a></li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.php">ФОТОГАЛЕРЕЯ</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Контакты</a>
+                        <a class="nav-link" href="contact.php">КОНТАКТЫ</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="team.php">Педагоги</a>
+                        <a class="nav-link" href="contact.php">ОПРОС</a>
                     </li>
 
-                    <!-- Сюда можно добавить ещё пункты меню при необходимости -->
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">
@@ -52,23 +66,15 @@
                         <i class="bi bi-moon"></i>
                     </button>
 
+                  <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addNewsModal">
+                        <i class="bi bi-plus-lg"></i> Создать новость
+                    </button>
+                  <?php endif; ?>
+
                     <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === true): ?>
 
-                        <!-- Кнопки для авторизованных пользователей -->
-                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
-                            <!-- Администратор -->
-                            <a href="admin_schedule.php" class="btn btn-outline-warning me-2" title="Управление расписанием">
-                                <i class="bi bi-calendar-event me-1"></i> Расписание (админ)
-                            </a>
-                            <a href="admin.php" class="btn btn-outline-danger me-2" title="Панель администратора">
-                                <i class="bi bi-shield-lock me-1"></i> Админ-панель
-                            </a>
-                        <?php else: ?>
-                            <!-- Обычный пользователь -->
-                            <a href="schedule.php" class="btn btn-outline-warning me-2" title="Посмотреть расписание уроков">
-                                <i class="bi bi-calendar-check me-1"></i> Расписание
-                            </a>
-                        <?php endif; ?>
+
 
                         <!-- Выпадающее меню с именем пользователя -->
                         <div class="dropdown">
@@ -197,7 +203,41 @@
   </div>
 </div>
 
+<?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+<div class="modal fade text-dark" id="addNewsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="functions/add_news.php" enctype="multipart/form-data" method="POST" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавить школьную новость</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 text-start">
+                    <label class="form-label">Заголовок</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                
+                <div class="mb-3 text-start">
+                    <label class="form-label">Текст</label>
+                    <textarea name="content" class="form-control" rows="5" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-uppercase">Изображение</label>
+                    <input type="file" name="news_image" class="form-control" accept="image/*">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Опубликовать</button>
+            </div>
+        </form>
+    </div>
+</div>
+<?php endif; ?>
+
 <script>
+
+
   <?php if (isset($_SESSION['reg_error'])): ?>
   document.addEventListener('DOMContentLoaded', function() {
     const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
