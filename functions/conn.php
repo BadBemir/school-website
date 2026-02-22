@@ -1,9 +1,9 @@
 <?php
 // Подключение к базе данных
-$servername = "sql100.infinityfree.com";
-$dbusername = "if0_40957845";
-$dbpassword = "Bolivar211007";
-$dbname = "if0_40957845_site";
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "school";
 
 try {
     // Создание подключения с обработкой ошибок
