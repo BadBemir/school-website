@@ -37,12 +37,12 @@
                         <ul class="dropdown-menu"  aria-labelledby="aboutDropdown">
                             <li><a class="dropdown-item" href="about.php#history">История школы</a></li>
                             <li><a class="dropdown-item" href="about.php#maininfo">Основные сведения</a></li>
-                            <li><a class="dropdown-item" href="about.php#maininfo">Структура и органы управления</a></li>
-                            <li><a class="dropdown-item" href="about.php#maininfo">Документы</a></li>
-                            <li><a class="dropdown-item" href="about.php#maininfo">Образовательные стандарты</a></li>
+                            <li><a class="dropdown-item" href="structure.php">Структура и органы управления</a></li>
+                            <li><a class="dropdown-item" href="documents.php">Документы</a></li>
+                            <li><a class="dropdown-item" href="standards.php">Образовательные стандарты</a></li>
                             <li><a class="dropdown-item" href="team.php">Руководство и педагогический состав</a></li>
-                            <li><a class="dropdown-item" href="team.php">Меры поддержки обучающихся</a></li>
-                            <li><a class="dropdown-item" href="team.php">Организация питания</a></li>
+                            <li><a class="dropdown-item" href="support.php">Меры поддержки обучающихся</a></li>
+                            <li><a class="dropdown-item" href="meals.php">Организация питания</a></li>
                         </ul>
                     </li>
 
