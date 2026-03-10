@@ -151,7 +151,7 @@ try {
 
           
       <section class="py-5">
-        <div class="album py-5 bg-light text-dark">
+        <div class="album py-5">
         <div class="container">
           <div class="d-flex justify-content-between mb-4">
           <h2>Последние новости</h2>
@@ -194,7 +194,7 @@ try {
               
               <div class="row g-4 mt-4">
                 <div class="col-md-6 col-lg-4">
-                  <div class="card h-100 border-primary hero-section shadow-sm">
+                  <div class="card h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <h5 class="card-title">Сильный педагогический коллектив</h5>
                       <p class="card-text">Большинство наших учителей имеют высшую и первую квалификационную категорию, регулярно проходят курсы повышения квалификации, участвуют в профессиональных конкурсах и имеют значительный стаж успешной работы.</p>
@@ -203,7 +203,7 @@ try {
                 </div>
                 
                 <div class="col-md-6 col-lg-4">
-                  <div class="card h-100 border-primary hero-section  shadow-sm">
+                  <div class="card h-100 border-primary  shadow-sm">
                     <div class="card-body">
                       <h5 class="card-title">Современная материально-техническая база</h5>
                       <p class="card-text">Оборудованные кабинеты физики, химии, биологии, информатики, лингафонные кабинеты, спортивный и тренажёрный залы, современная столовая, медицинский кабинет — всё для комфортного обучения и развития.</p>
@@ -212,7 +212,7 @@ try {
                 </div>
                 
                 <div class="col-md-6 col-lg-4">
-                  <div class="card h-100 border-primary hero-section shadow-sm">
+                  <div class="card h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <h5 class="card-title">Богатая внеурочная жизнь</h5>
                       <p class="card-text">Работают 18 объединений дополнительного образования, спортивные секции, театральная студия, вокальная группа, школьный музей, проводятся традиционные праздники, конкурсы, интеллектуальные игры и многое другое.</p>

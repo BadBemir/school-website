@@ -8,7 +8,7 @@
   --school-orange: #f97316;
   --school-yellow: #fbbf24;
   --school-red: #ef4444;
-  --school-gray: #6b7280;
+  --school-gray: #cccccc6b;
   --school-light: #f8fafc;
   --border-radius: 8px;
   
@@ -101,6 +101,10 @@ body.dark-theme .btn-light:hover {
 
 body.dark-theme .hero-section {
   background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(16, 185, 129, 0.1));
+}
+
+body .hero-section {
+  background-color: var(--school-gray);
 }
 
 
@@ -212,9 +216,7 @@ footer {
 .navbar-brand i {
   color: var(--school-yellow);
 }
-.hero-section {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(16, 185, 129, 0.05));
-}
+
 .contact-icon-large {
   font-size: 2rem;
 }
