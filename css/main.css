@@ -80,12 +80,12 @@ body.dark-theme .text-dark {
   color: #f3f4f6 !important; 
 }
 
-body.dark-theme a:not(.btn):not(.nav-link) {
+/* /* body.dark-theme a:not(.btn):not(.nav-link) {
   color: #60a5fa;
 }
 body.dark-theme a:not(.btn):not(.nav-link):hover {
-  color: #93c5fd;
-}
+  color: #93c5fd; 
+} */
 
 
 body.dark-theme .btn-light {
