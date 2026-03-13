@@ -41,13 +41,7 @@
                             <li><a class="dropdown-item" href="documents.php">Документы</a></li>
                             <li><a class="dropdown-item" href="standards.php">Образовательные стандарты</a></li>
                             <li><a class="dropdown-item" href="team.php">Руководство и педагогический состав</a></li>
-                            <li><a class="dropdown-item" href="support.php">Меры поддержки обучающихся</a></li>
-                            <li><a class="dropdown-item" href="meals.php">Организация питания</a></li>
                         </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">ФОТОГАЛЕРЕЯ</a>
                     </li>
                     
                     <li class="nav-item">
@@ -55,7 +49,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">ОПРОС</a>
+                        <a class="nav-link" href="form_action.php">ОПРОС</a>
                     </li>
 
                 </ul>

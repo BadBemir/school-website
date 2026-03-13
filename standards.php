@@ -84,7 +84,7 @@ $general_error = getError();
         </section>
 
         <!-- Документы ФГОС -->
-        <section class="py-4 bg-light">
+        <section class="py-4 bg">
             <div class="container">
                 <div class="card mb-4 shadow-sm border-0">
                     <div class="card-header bg-primary text-white">
@@ -157,7 +157,6 @@ $general_error = getError();
                                 <p><strong>Нормативный срок обучения:</strong> 4 года</p>
                                 <p><strong>Численность обучающихся:</strong> 340 человек</p>
                                 <p><strong>Учебные предметы:</strong> Русский язык, Литературное чтение, Иностранный язык (английский), Математика, Окружающий мир, Основы религиозных культур и светской этики, Музыка, Изобразительное искусство, Технология, Физическая культура</p>
-                                <a href="/docs/oop_noo.pdf" class="btn btn-primary mt-2"><i class="bi bi-download me-1"></i>Скачать программу (PDF)</a>
                             </div>
                             
                             <div class="tab-pane fade" id="ooo" role="tabpanel">
@@ -168,7 +167,6 @@ $general_error = getError();
                                 <p><strong>Нормативный срок обучения:</strong> 5 лет</p>
                                 <p><strong>Численность обучающихся:</strong> 420 человек</p>
                                 <p><strong>Учебные предметы:</strong> Русский язык, Литература, Иностранный язык (английский), Математика, Алгебра, Геометрия, Информатика, История, Обществознание, География, Физика, Химия, Биология, Музыка, Изобразительное искусство, Технология, Физическая культура, Основы безопасности жизнедеятельности</p>
-                                <a href="/docs/oop_ooo.pdf" class="btn btn-primary mt-2"><i class="bi bi-download me-1"></i>Скачать программу (PDF)</a>
                             </div>
                             
                             <div class="tab-pane fade" id="soo" role="tabpanel">
@@ -180,7 +178,6 @@ $general_error = getError();
                                 <p><strong>Численность обучающихся:</strong> 90 человек</p>
                                 <p><strong>Профили обучения:</strong> универсальный, технологический, гуманитарный</p>
                                 <p><strong>Учебные предметы (углубленный уровень):</strong> Математика, Физика, Информатика, История, Обществознание, Право, Литература</p>
-                                <a href="/docs/oop_soo.pdf" class="btn btn-primary mt-2"><i class="bi bi-download me-1"></i>Скачать программу (PDF)</a>
                             </div>
                         </div>
                     </div>
@@ -188,88 +185,6 @@ $general_error = getError();
             </div>
         </section>
 
-        <!-- Методические материалы -->
-        <section class="py-4 bg-light">
-            <div class="container">
-                <div class="card mb-4 shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0"><i class="bi bi-journal-check me-2"></i>Методические материалы по ФГОС</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5>Для педагогов</h5>
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Методические рекомендации по реализации ФГОС
-                                        <a href="/docs/metod_rekom_fgos.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Технологическая карта урока по ФГОС (шаблон)
-                                        <a href="/docs/tehnologicheskaya_karta.docx" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Критерии оценки урока по ФГОС
-                                        <a href="/docs/kriterii_uroka_fgos.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <h5>Для родителей</h5>
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Что такое ФГОС? (памятка для родителей)
-                                        <a href="/docs/pamyatka_fgos_roditeli.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Портрет выпускника по ФГОС
-                                        <a href="/docs/portret_vypusknika.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Организация проектной деятельности (рекомендации)
-                                        <a href="/docs/proektnaya_deyatelnost.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Адаптированные программы -->
-        <section class="py-4">
-            <div class="container">
-                <div class="card mb-4 shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0"><i class="bi bi-person-heart me-2"></i>Адаптированные образовательные программы</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <p>В школе реализуются адаптированные основные общеобразовательные программы для обучающихся с ограниченными возможностями здоровья:</p>
-                        
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                АООП НОО для обучающихся с задержкой психического развития (вариант 7.1)
-                                <a href="/docs/aoop_noo_zpr_7.1.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                АООП НОО для обучающихся с задержкой психического развития (вариант 7.2)
-                                <a href="/docs/aoop_noo_zpr_7.2.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                АООП ООО для обучающихся с задержкой психического развития
-                                <a href="/docs/aoop_ooo_zpr.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                АООП для обучающихся с тяжелыми нарушениями речи (вариант 5.1)
-                                <a href="/docs/aoop_tnr_5.1.pdf" class="btn btn-sm btn-outline-primary">Скачать</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <?php require_once "footer.php"; ?>
