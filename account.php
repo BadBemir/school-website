@@ -219,6 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Школа 12 - Личный кабинет</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/main.css">
@@ -307,6 +308,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 </div>
             </div>
         </div>
+
+        <!-- Мои заявки -->
+<section class="mt-5">
+    <h4 class="mb-4">Мои заявки</h4>
+
+    <?php
+    try {
+        $user_id = $_SESSION['user_id'];
+        
+        $stmt = $conn->prepare("
+            SELECT id, created_at, fullname, phone, email, message, status
+            FROM applications 
+            WHERE user_id = :uid 
+            ORDER BY created_at DESC
+        ");
+        $stmt->execute([':uid' => $user_id]);
+        $my_apps = $stmt->fetchAll();
+
+        if ($my_apps):
+    ?>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>№</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                        <th>Текст заявки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($my_apps as $index => $app): ?>
+                    <tr>
+                        <td><?= $index + 1 ?></td>
+                        <td><?= date('d.m.Y H:i', strtotime($app['created_at'])) ?></td>
+                        <td>
+                            <?php
+                            $status_map = [
+                                'new'       => '<span class="badge bg-warning text-dark">Новая</span>',
+                                'processed' => '<span class="badge bg-primary">В работе</span>',
+                                'rejected'  => '<span class="badge bg-secondary">Отклонена</span>',
+                                'done'      => '<span class="badge bg-success">Обработана</span>'
+                            ];
+                            echo $status_map[$app['status']] ?? '<span class="badge bg-secondary">—</span>';
+                            ?>
+                        </td>
+                        <td>
+                            <details class="small">
+                                <summary class="text-primary cursor-pointer">Показать сообщение</summary>
+                                <div class="mt-2 p-2 bg-light rounded">
+                                    <?= nl2br(htmlspecialchars($app['message'])) ?>
+                                </div>
+                            </details>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="alert alert-info mt-3 small">
+            <i class="bi bi-info-circle me-2"></i>
+            Всего заявок: <?= count($my_apps) ?>
+        </div>
+
+    <?php else: ?>
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            У вас пока нет отправленных заявок.
+        </div>
+    <?php endif; 
+    } catch (PDOException $e) { ?>
+        <div class="alert alert-danger">
+            Ошибка загрузки заявок: <?= htmlspecialchars($e->getMessage()) ?>
+        </div>
+    <?php } ?>
+</section>
     </main>
 
     <?php require_once "footer.php"?>  

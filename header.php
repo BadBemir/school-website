@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="form_action.php">ОБРАТНАЯ СВЯЗЬ</a>
+                        <a class="nav-link" href="application.php">ОБРАТНАЯ СВЯЗЬ</a>
                     </li>
 
                 </ul>
