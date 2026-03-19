@@ -129,63 +129,6 @@ $general_error = getError();
             </div>
         </section>
 
-        <!-- Реализуемые образовательные программы -->
-        <section class="py-4">
-            <div class="container">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0">Реализуемые образовательные программы в соответствии с ФГОС</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <ul class="nav nav-tabs" id="programsTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="noo-tab" data-bs-toggle="tab" data-bs-target="#noo" type="button" role="tab">Начальное общее образование</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="ooo-tab" data-bs-toggle="tab" data-bs-target="#ooo" type="button" role="tab">Основное общее образование</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="soo-tab" data-bs-toggle="tab" data-bs-target="#soo" type="button" role="tab">Среднее общее образование</button>
-                            </li>
-                        </ul>
-                        
-                        <div class="tab-content p-3 border border-top-0 rounded-bottom" id="programsTabContent">
-                            <div class="tab-pane fade show active" id="noo" role="tabpanel">
-                                <h5 class="mb-3">Основная образовательная программа начального общего образования (ФГОС НОО)</h5>
-                                <p><strong>Срок действия государственной аккредитации:</strong> бессрочно</p>
-                                <p><strong>Язык обучения:</strong> русский</p>
-                                <p><strong>Уровень образования:</strong> начальное общее образование</p>
-                                <p><strong>Нормативный срок обучения:</strong> 4 года</p>
-                                <p><strong>Численность обучающихся:</strong> 340 человек</p>
-                                <p><strong>Учебные предметы:</strong> Русский язык, Литературное чтение, Иностранный язык (английский), Математика, Окружающий мир, Основы религиозных культур и светской этики, Музыка, Изобразительное искусство, Технология, Физическая культура</p>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="ooo" role="tabpanel">
-                                <h5 class="mb-3">Основная образовательная программа основного общего образования (ФГОС ООО)</h5>
-                                <p><strong>Срок действия государственной аккредитации:</strong> бессрочно</p>
-                                <p><strong>Язык обучения:</strong> русский</p>
-                                <p><strong>Уровень образования:</strong> основное общее образование</p>
-                                <p><strong>Нормативный срок обучения:</strong> 5 лет</p>
-                                <p><strong>Численность обучающихся:</strong> 420 человек</p>
-                                <p><strong>Учебные предметы:</strong> Русский язык, Литература, Иностранный язык (английский), Математика, Алгебра, Геометрия, Информатика, История, Обществознание, География, Физика, Химия, Биология, Музыка, Изобразительное искусство, Технология, Физическая культура, Основы безопасности жизнедеятельности</p>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="soo" role="tabpanel">
-                                <h5 class="mb-3">Основная образовательная программа среднего общего образования (ФГОС СОО)</h5>
-                                <p><strong>Срок действия государственной аккредитации:</strong> бессрочно</p>
-                                <p><strong>Язык обучения:</strong> русский</p>
-                                <p><strong>Уровень образования:</strong> среднее общее образование</p>
-                                <p><strong>Нормативный срок обучения:</strong> 2 года</p>
-                                <p><strong>Численность обучающихся:</strong> 90 человек</p>
-                                <p><strong>Профили обучения:</strong> универсальный, технологический, гуманитарный</p>
-                                <p><strong>Учебные предметы (углубленный уровень):</strong> Математика, Физика, Информатика, История, Обществознание, Право, Литература</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <?php require_once "footer.php"; ?>

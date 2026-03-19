@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.php
+Disallow: /functions/
+Disallow: /account.php
+Disallow: /logout.php
+Disallow: /form_action.php
+Disallow: /update_*
+Disallow: /delete_*
+
+# Запрещаем индексацию временных/технических файлов и папок
+Disallow: /*.php$
+Disallow: /css/
+Disallow: /js/
+Disallow: /images/private/
+Disallow: /*?
+
+# Указываем расположение sitemap (если ты его уже создал)
+Sitemap: https://school12.rf.gd/sitemap.xml
+
+# Дополнительно (на всякий случай)
+Host: school12.rf.gd
