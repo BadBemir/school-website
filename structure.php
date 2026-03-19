@@ -20,7 +20,6 @@ $general_error = getError();
     <?php require_once "header.php"; ?>
     
     <main>
-        <!-- Hero Section -->
         <section class="hero-section" style="padding: 3rem 0;">
             <div class="container">
                 <div class="text-center hero-content">
@@ -36,7 +35,7 @@ $general_error = getError();
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card mb-5 border-0 shadow-sm">
+                        <div class="card mb-5 shadow-sm">
                             <div class="card-header bg-primary text-white">
                                 <h3 class="mb-0">Структурные подразделения</h3>
                             </div>
@@ -98,7 +97,7 @@ $general_error = getError();
         <!-- Органы управления -->
         <section class="py-5 bg">
             <div class="container">
-                <div class="card border-0 shadow-sm">
+                <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
                         <h3 class="mb-0">Органы управления образовательной организацией</h3>
                     </div>

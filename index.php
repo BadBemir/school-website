@@ -56,7 +56,7 @@ try {
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6 hero-content fade-in-up">
-              <h1 class="display-4 fw-bold mb-4">Добро пожаловать в Школу №12 НГО</h1>
+              <h1 class="display-4 fw-bold mb-4">Добро пожаловать на сайт Школы №12 НГО</h1>
               <p class="lead mb-4" style="font-size: 1.25rem; opacity: 0.95;">Мы рады приветствовать гостей на нашем сайте — электронном портрете нашей замечательной школы. Надеемся, что сайт будет во многом полезен как учителям, так ученикам и родителям.</p>
               <p class="mb-4" style="opacity: 0.9;">Здесь Вы сможете найти актуальную информацию об учреждении.</p>
               <div class="d-flex gap-3 flex-wrap">
@@ -90,8 +90,8 @@ try {
                   <div class="card  h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <i class="bi bi-mortarboard-fill display-4 text-primary mb-3"></i>
-                      <h4 class="text-primary">58 педагогов</h4>
-                      <p class="text-muted">Большинство — высшая и первая категория</p>
+                      <h4 class="text-primary">61 педагог</h4>
+                      <p class="text-muted">Большинство с высшим образованием</p>
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ try {
                   <div class="card h-100 border-primary shadow-sm">
                     <div class="card-body">
                       <i class="bi bi-calendar-event-fill display-4 text-primary mb-3"></i>
-                      <h4 class="text-primary">Активная жизнь</h4>
+                      <h4 class="text-primary">Активная школьная жизнь</h4>
                       <p class="text-muted">Более 40 мероприятий в год</p>
                     </div>
                   </div>

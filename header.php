@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand fs-4 fw-bold" href="/">
-                <i class="bi bi-mortarboard-fill me-2"></i>Школа №12 НГО
+                <i class="bi bi-mortarboard-fill me-2"></i>Карьерный компас
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="form_action.php">ОПРОС</a>
+                        <a class="nav-link" href="form_action.php">ОБРАТНАЯ СВЯЗЬ</a>
                     </li>
 
                 </ul>

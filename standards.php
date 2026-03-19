@@ -34,7 +34,7 @@ $general_error = getError();
         <!-- Информация о стандартах -->
         <section class="py-4">
             <div class="container">
-                <div class="card mb-4 shadow-sm border-0">
+                <div class="card mb-4 shadow-sm">
                     <div class="card-header bg-primary text-white">
                         <h3 class="mb-0">Федеральные государственные образовательные стандарты</h3>
                     </div>
@@ -43,7 +43,7 @@ $general_error = getError();
                         
                         <div class="row mt-4">
                             <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-primary hero-section shadow-sm">
+                                <div class="card h-100 hero-section shadow-sm">
                                     <div class="card-body text-center">
                                         <i class="bi bi-book fs-1 text-primary mb-3"></i>
                                         <h4 class="card-title">ФГОС НОО</h4>
@@ -55,7 +55,7 @@ $general_error = getError();
                             </div>
                             
                             <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-primary hero-section shadow-sm">
+                                <div class="card h-100 hero-section shadow-sm">
                                     <div class="card-body text-center">
                                         <i class="bi bi-journal-bookmark-fill fs-1 text-primary mb-3"></i>
                                         <h4 class="card-title">ФГОС ООО</h4>
@@ -67,7 +67,7 @@ $general_error = getError();
                             </div>
                             
                             <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-primary hero-section shadow-sm">
+                                <div class="card h-100 hero-section shadow-sm">
                                     <div class="card-body text-center">
                                         <i class="bi bi-mortarboard-fill fs-1 text-primary mb-3"></i>
                                         <h4 class="card-title">ФГОС СОО</h4>
@@ -86,7 +86,7 @@ $general_error = getError();
         <!-- Документы ФГОС -->
         <section class="py-4 bg">
             <div class="container">
-                <div class="card mb-4 shadow-sm border-0">
+                <div class="card mb-4 shadow-sm     ">
                     <div class="card-header bg-primary text-white">
                         <h3 class="mb-0"><i class="bi bi-file-earmark-text me-2"></i>Приказы Минпросвещения об утверждении ФГОС</h3>
                     </div>
@@ -131,7 +131,7 @@ $general_error = getError();
         <!-- Реализуемые образовательные программы -->
         <section class="py-4">
             <div class="container">
-                <div class="card mb-4 shadow-sm border-0">
+                <div class="card mb-4 shadow-sm">
                     <div class="card-header bg-primary text-white">
                         <h3 class="mb-0">Реализуемые образовательные программы в соответствии с ФГОС</h3>
                     </div>

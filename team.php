@@ -42,8 +42,8 @@ $general_error = getError();
           <div class="card-body p-4">
             <div class="row g-4">
               <!-- Директор -->
-              <div class="col-md-6">
-                <div class="card h-100 border-primary">
+              <div class="col-md-4">
+                <div class="card h-100 ">
                   <div class="card-body text-center">
                     <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
                       <i class="bi bi-person-fill text-white" style="font-size: 3rem;"></i>
@@ -52,34 +52,39 @@ $general_error = getError();
                     <p class="text-primary mb-2">Директор школы</p>
                     <div class="mb-3">
                     </div>
-                    <p class="text-muted small mb-2"><i class="bi bi-briefcase me-1"></i>Общий стаж: 35 лет</p>
                     <p class="text-muted small"><i class="bi bi-award me-1"></i>В должности директора: 15 лет</p>
                   </div>
                 </div>
               </div>
               
               <!-- Заместители -->
-              <div class="col-md-6">
+              <div class="col-md-8">
                 <div class="card h-100">
                   <div class="card-body">
                     <h6 class="card-subtitle mb-3 text-primary fw-bold"><i class="bi bi-people me-1"></i>Заместители директора</h6>
                     
                     <div class="mb-3">
-                      <h6 class="fw-bold mb-1">Сидорова Елена Викторовна</h6>
-                      <p class="text-muted small mb-1">Заместитель директора по учебно-воспитательной работе</p>
-                      <p class="text-muted small"><i class="bi bi-book me-1"></i>Учитель математики высшей категории</p>
+                      <h6 class="fw-bold mb-1">Мартынова Елена Юрьевна</h6>
+                      <p class="text-muted mb-1">Заместитель директора по учебно-воспитательной работе (Начальное образование)</p>
+                      <p class="text-muted">8 (4236) 69-98-03</p>
                     </div>
                     
                     <div class="mb-3">
-                      <h6 class="fw-bold mb-1">Петров Игорь Сергеевич</h6>
-                      <p class="text-muted small mb-1">Заместитель директора по воспитательной работе</p>
-                      <p class="text-muted small"><i class="bi bi-flag me-1"></i>Координатор патриотического воспитания</p>
+                      <h6 class="fw-bold mb-1">Азаренко Алена Николаевна</h6>
+                      <p class="text-muted mb-1">Заместитель директора по учебно-воспитательной работе (Общее и Среднее образование)</p>
+                      <p class="text-muted">8 (4236) 69-98-03</p>
                     </div>
                     
                     <div>
-                      <h6 class="fw-bold mb-1">Смирнова Ольга Витальевна</h6>
-                      <p class="text-muted small mb-1">Заместитель директора по начальной школе</p>
-                      <p class="text-muted small"><i class="bi bi-mortarboard me-1"></i>Учитель начальных классов высшей категории</p>
+                      <h6 class="fw-bold mb-1">Коваль Любовь Анатольевна</h6>
+                      <p class="text-muted mb-1">Заместитель директора по учебно-воспитательной работе</p>
+                      <p class="text-muted">8 (4236) 69-98-03</p>
+                    </div>
+
+                    <div>
+                      <h6 class="fw-bold mb-1">Полина Евгения Юрьевна</h6>
+                      <p class="text-muted mb-1">Методист (Дошкольное образование)</p>
+                      <p class="text-muted">8 (4236) 74-19-96</p>
                     </div>
                   </div>
                 </div>
@@ -88,142 +93,44 @@ $general_error = getError();
           </div>
         </div>
 
-        <!-- Педагогический состав -->
-        <div class="card mb-5 shadow-lg">
-          <div class="card-header bg-primary text-white">
-            <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>Педагогический состав</h3>
-          </div>
-            <!-- Таблица учителей -->
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>ФИО</th>
-                    <th>Должность / Предмет</th>
-                    <th>Стаж</th>
-                    <th>Награды</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Ковалева Мария Ивановна</strong></td>
-                    <td>Учитель русского языка и литературы</td>
-                    <td>32 года</td>
-                    <td><span class="badge bg-warning">Почетный работник</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Петровский Александр Сергеевич</strong></td>
-                    <td>Учитель истории и обществознания</td>
-                    <td>28 лет</td>
-                    <td><span class="badge bg-info">Руководитель музея</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Сидорова Татьяна Владимировна</strong></td>
-                    <td>Учитель математики</td>
-                    <td>25 лет</td>
-                    <td><span class="badge bg-success">Учитель года-2020</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Козлов Дмитрий Анатольевич</strong></td>
-                    <td>Учитель физики</td>
-                    <td>18 лет</td>
-                    <td><span class="badge bg-secondary">Наставник</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Николаева Елена Петровна</strong></td>
-                    <td>Учитель английского языка</td>
-                    <td>30 лет</td>
-                    <td><span class="badge bg-warning">Почетный работник</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Федоров Сергей Михайлович</strong></td>
-                    <td>Учитель информатики</td>
-                    <td>12 лет</td>
-                    <td><span class="badge bg-info">IT-координатор</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Васильева Ольга Николаевна</strong></td>
-                    <td>Учитель начальных классов</td>
-                    <td>40 лет</td>
-                    <td><span class="badge bg-success">Заслуженный учитель</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-  
-            
-          </div>
 
-        </div>
-
-
-        <div class="container my-5">
-        <!-- Руководство школы -->
-        <div class="card mb-5 shadow-lg">
-          <div class="card-header bg-primary text-white">
-            <h3 class="mb-0"><i class="bi bi-person-badge me-2"></i>Руководство школы</h3>
-          </div>
-          <div class="card-body p-4">
-            <div class="row g-4">
-              <div class="card-body p-4">
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="card h-100 border-primary">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-journal-text me-2"></i>Начальных классов</h5>
-                  </div>
-                  <div class="card-body">
-                    <p class="card-text">15 педагогов</p>
-                    <p class="card-text small text-muted">Руководитель: Васильева О.Н.</p>
-                    <ul class="small">
-                      <li>Инновационные технологии обучения</li>
-                      <li>Преемственность ДОУ-школа</li>
-                      <li>Развивающее обучение</li>
-                    </ul>
-                  </div>
+            <div class="container my-5">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0"><i class="bi bi-file-text me-2"></i>Педагогический состав</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Наименование документа</th>
+                                        <th>Файл</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Персональный состав педагогических работников дошкольного образования</td>
+                                        <td><a href="/docs/DO.docx" class="btn btn-sm btn-primary"><i class="bi bi-download me-1"></i>Скачать</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Персональный состав педагогических работников НОО</td>
+                                        <td><a href="/docs/NOO.xlsx" class="btn btn-sm btn-primary"><i class="bi bi-download me-1"></i>Скачать</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Персональный состав педагогических работников ООО и СОО</td>
+                                        <td><a href="/docs/SOO.xlsx" class="btn btn-sm btn-primary"><i class="bi bi-download me-1"></i>Скачать</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              
-              <div class="col-md-4">
-                <div class="card h-100 border-primary">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-book me-2"></i>Гуманитарного цикла</h5>
-                  </div>
-                  <div class="card-body">
-                    <p class="card-text">12 педагогов</p>
-                    <p class="card-text small text-muted">Руководитель: Ковалева М.И.</p>
-                    <ul class="small">
-                      <li>Патриотическое воспитание</li>
-                      <li>Краеведческая работа</li>
-                      <li>Проектная деятельность</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-md-4">
-                <div class="card h-100 border-primary">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-calculator me-2"></i>Естественных наук</h5>
-                  </div>
-                  <div class="card-body">
-                    <p class="card-text">10 педагогов</p>
-                    <p class="card-text small text-muted">Руководитель: Сидорова Т.В.</p>
-                    <ul class="small">
-                      <li>STEM-образование</li>
-                      <li>Олимпиадная подготовка</li>
-                      <li>Цифровые лаборатории</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            </div>
 
-            </div>
-          </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
+
+
 
       </div>
     </main>
