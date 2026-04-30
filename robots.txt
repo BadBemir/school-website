@@ -16,8 +16,24 @@ Disallow: /js/
 Disallow: /images/private/
 Disallow: /*?
 
-# Указываем расположение sitemap (если ты его уже создал)
+# Указываем расположение sitemap
 Sitemap: https://school12.rf.gd/sitemap.xml
-
-# Дополнительно (на всякий случай)
 Host: school12.rf.gd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

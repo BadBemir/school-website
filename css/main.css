@@ -99,7 +99,7 @@ body.dark-theme .btn-light:hover {
 }
 
 
-body.dark-theme .hero-section {
+.dark-theme .hero-section {
   background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(16, 185, 129, 0.1));
 }
 
@@ -242,5 +242,72 @@ footer {
     background-color: #ef4444;
     color: white;
 }
+
+/* Основа */
+body.accessibility-mode {
+    background-color: #000 !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    line-height: 1.8 !important;
+}
+
+/* Все элементы */
+.accessibility-mode * {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+/* Ссылки */
+.accessibility-mode a {
+    color: #ffff00 !important;
+    text-decoration: underline !important;
+}
+
+/* Карточки, блоки Bootstrap */
+.accessibility-mode .card,
+.accessibility-mode .container,
+.accessibility-mode .navbar,
+.accessibility-mode .footer {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+/* Кнопки */
+.accessibility-mode .btn {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+/* Убираем картинки (по желанию) */
+.accessibility-mode img {
+    display: none !important;
+}
+
+/* ❗ ПРИОРИТЕТ РЕЖИМА СЛАБОВИДЯЩИХ */
+body.accessibility-mode.dark-mode {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+/* Перебиваем ВСЮ темную тему */
+body.accessibility-mode.dark-mode * {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+/* Ссылки */
+body.accessibility-mode.dark-mode a {
+    color: yellow !important;
+}
+
+/* Картинки */
+body.accessibility-mode.dark-mode img {
+    display: none !important;
+}
+
+
+
 
 

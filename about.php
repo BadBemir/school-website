@@ -48,7 +48,7 @@ $general_error = getError();
                   </div>
                 </div>
             <!-- Основной текст -->
-                <div class=" p-4 rounded-3 border-start border-primary border-4 mb-5">
+                <div class=" p-4 rounded-3 border-start border-primary mb-5">
                   <p class="fs-5 mb-0 lh-lg">
                     <i class="bi bi-quote text-primary me-2"></i>
                     Средняя школа № 12 создана в 1989 году решением исполнительного Комитета Городского Совета Народных Депутатов от 29 августа 1989 года № 552. 

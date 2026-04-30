@@ -50,3 +50,46 @@
         <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
     </div>
 </footer>
+
+<script>
+// Применение сохранённой темы при загрузке страницы
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    } else if (savedTheme === "accessibility") {
+        document.body.classList.add("accessibility-mode");
+    }
+});
+
+// Тёмная тема
+function toggleDarkMode() {
+    // выключаем доступность
+    document.body.classList.remove("accessibility-mode");
+
+    const isDark = document.body.classList.toggle("dark-mode");
+
+    // сохраняем состояние
+    if (isDark) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "normal");
+    }
+}
+
+// Режим доступности
+function toggleAccessibility() {
+    // выключаем тёмную тему
+    document.body.classList.remove("dark-mode");
+
+    const isAcc = document.body.classList.toggle("accessibility-mode");
+
+    // сохраняем состояние
+    if (isAcc) {
+        localStorage.setItem("theme", "accessibility");
+    } else {
+        localStorage.setItem("theme", "normal");
+    }
+}
+</script>

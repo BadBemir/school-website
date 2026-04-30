@@ -5,7 +5,7 @@
     <title>Хедер</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
@@ -56,8 +56,12 @@
 
                 <div class="d-flex align-items-center gap-2">
                     <!-- Кнопка смены темы -->
-                    <button id="theme-toggle" class="btn btn-light me-2" title="Сменить тему">
+                    <button onclick="toggleDarkMode()"  id="theme-toggle" class="btn btn-light me-2" title="Сменить тему">
                         <i class="bi bi-moon"></i>
+                    </button>
+
+                    <button onclick="toggleAccessibility()"  id="accessibilityToggle" class="btn btn-warning me-2" title="Версия для слабовидящих">
+                        <i class="bi bi-eye"></i>
                     </button>
 
                   <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
@@ -230,6 +234,11 @@
 <?php endif; ?>
 
 <script>
+
+  
+
+
+  
 
 
   <?php if (isset($_SESSION['reg_error'])): ?>
